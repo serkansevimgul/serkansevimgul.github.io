@@ -6,7 +6,6 @@
   <title>Serkan Sevimgül | Engineering Portfolio</title>
   <style>
     * { box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
 
     body{
@@ -104,15 +103,6 @@
       box-shadow:0 10px 28px rgba(0,0,0,0.22);
     }
 
-    .card h3{
-      margin:0 0 10px;
-      font-size:24px;
-    }
-
-    .muted{
-      color:#aab4c0;
-    }
-
     .skills{
       display:flex;
       flex-wrap:wrap;
@@ -141,22 +131,26 @@
       border-radius:18px;
       overflow:hidden;
       box-shadow:0 10px 28px rgba(0,0,0,0.22);
+      transition:0.25s ease;
+    }
+
+    .project-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 16px 34px rgba(0,0,0,0.28);
     }
 
     .project-media{
-      height:220px;
-      background:
-        linear-gradient(135deg, rgba(59,130,246,0.20), rgba(255,255,255,0.03)),
-        #0f1621;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:#8fa3b8;
-      font-weight:700;
-      font-size:15px;
+      height:240px;
+      background:#0f1621;
       border-bottom:1px solid rgba(255,255,255,0.08);
-      text-align:center;
-      padding:16px;
+      overflow:hidden;
+    }
+
+    .project-media img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
     }
 
     .project-content{
@@ -243,6 +237,10 @@
       .section-title{
         font-size:28px;
       }
+
+      .project-media{
+        height:220px;
+      }
     }
   </style>
 </head>
@@ -307,7 +305,9 @@
       <div class="projects-grid">
 
         <div class="project-card">
-          <div class="project-media">SolidWorks Image Placeholder<br>Movable Front Water Spray Bar</div>
+          <div class="project-media">
+            <img src="water-spray-bar.png" alt="Movable Front Water Spray Bar System">
+          </div>
           <div class="project-content">
             <h3>Movable Front Water Spray Bar System</h3>
             <p>Adjustable front spray bar designed for vacuum road sweepers to improve dust suppression and water distribution during sweeping operations.</p>
@@ -321,7 +321,9 @@
         </div>
 
         <div class="project-card">
-          <div class="project-media">SolidWorks Image Placeholder<br>Triple Brush Sweeping System</div>
+          <div class="project-media">
+            <img src="triple-brush.png" alt="Triple Brush Sweeping System">
+          </div>
           <div class="project-content">
             <h3>Triple Brush Sweeping System</h3>
             <p>Multi-brush sweeping mechanism developed to increase road cleaning efficiency and debris collection coverage in vacuum sweeping vehicles.</p>
@@ -335,21 +337,9 @@
         </div>
 
         <div class="project-card">
-          <div class="project-media">Project Placeholder<br>Airport Runway Sweeping Adaptation</div>
-          <div class="project-content">
-            <h3>Airport Runway Sweeping Adaptation</h3>
-            <p>Engineering adaptation of vacuum road sweepers for large-scale airport runway cleaning with improved durability and operational coverage.</p>
-            <p>Vakumlu yol süpürme araçlarının havaalanı pistlerinde geniş ölçekli temizlik için dayanıklılığı ve operasyonel kapsama alanı artırılarak uyarlanması.</p>
-            <div class="project-tags">
-              <span class="small-tag">Product Development</span>
-              <span class="small-tag">Vehicle Systems</span>
-              <span class="small-tag">Engineering</span>
-            </div>
+          <div class="project-media">
+            <img src="heated-undercarriage.png" alt="Heated Airport Sweeping Undercarriage">
           </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-media">SolidWorks Image Placeholder<br>Heated Airport Sweeping Undercarriage</div>
           <div class="project-content">
             <h3>Heated Airport Sweeping Undercarriage</h3>
             <p>Cold-climate undercarriage sweeping system with heating capability designed for reliable operation in regions such as Russia.</p>
@@ -363,7 +353,9 @@
         </div>
 
         <div class="project-card">
-          <div class="project-media">Photo + SolidWorks Placeholder<br>Magnetic Metal Collection System</div>
+          <div class="project-media">
+            <img src="magnetic-photo.png" alt="Magnetic Metal Collection System">
+          </div>
           <div class="project-content">
             <h3>Magnetic Metal Collection System</h3>
             <p>Front mounted magnetic system designed to collect ferrous metal debris such as nails and bolts during sweeping operations.</p>
@@ -377,7 +369,25 @@
         </div>
 
         <div class="project-card">
-          <div class="project-media">Video / Post Placeholder<br>Dust Prevention System</div>
+          <div class="project-media" style="display:flex;align-items:center;justify-content:center;color:#9aa8b8;background:#101722;padding:20px;text-align:center;">
+            Airport Runway Sweeping Adaptation
+          </div>
+          <div class="project-content">
+            <h3>Airport Runway Sweeping Adaptation</h3>
+            <p>Engineering adaptation of vacuum road sweepers for large-scale airport runway cleaning with improved durability and operational coverage.</p>
+            <p>Vakumlu yol süpürme araçlarının havaalanı pistlerinde geniş ölçekli temizlik için dayanıklılığı ve operasyonel kapsama alanı artırılarak uyarlanması.</p>
+            <div class="project-tags">
+              <span class="small-tag">Product Development</span>
+              <span class="small-tag">Vehicle Systems</span>
+              <span class="small-tag">Engineering</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-media" style="display:flex;align-items:center;justify-content:center;color:#9aa8b8;background:#101722;padding:20px;text-align:center;">
+            Dust Prevention System<br>LinkedIn Post / Video
+          </div>
           <div class="project-content">
             <h3>Dust Prevention System</h3>
             <p>Engineering solution developed to reduce dust emission during dry vacuum sweeping while maintaining a clean road surface finish.</p>
@@ -396,11 +406,8 @@
     <section class="section">
       <h2 class="section-title">Video / Bağlantı</h2>
       <div class="video-box">
-        <p class="muted">
-          Dust Prevention System LinkedIn Post / Toz Önleme Sistemi LinkedIn Paylaşımı
-        </p>
         <p>
-          <a href="https://www.linkedin.com/posts/serkan-sevimg%C3%BCl-9616261a1_sweepers-roadconstruction-roadsweeper-activity-6804489465659211776-PuFk?utm_medium=ios_app&rcm=ACoAAC9Bp9kBrxBJMbWIjyR_UYIVmRbP7dpeaQU&utm_source=social_share_send&utm_campaign=whatsapp" target="_blank">
+          <a href="https://www.linkedin.com/posts/serkan-sevimg%C3%BCl-9616261a1_sweepers-roadconstruction-roadsweeper-activity-6804489465659211776-PuFk?utm_medium=ios_app&rcm=ACoAAC9Bp9kBrxBJMbWIjyR_UYIVmRbP7dpeaQU&utm_source=social_share_send&utm_campaign=whatsapp" target="_blank" style="color:#8fcbff;text-decoration:none;">
             View LinkedIn Post / LinkedIn Paylaşımını Aç
           </a>
         </p>
