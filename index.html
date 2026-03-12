@@ -1,127 +1,274 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
-<meta charset="UTF-8">
-<title>Serkan Sevimgül | Engineering Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Serkan Sevimgül | Engineering Portfolio</title>
+  <style>
+    *{
+      box-sizing:border-box;
+    }
 
-<style>
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      background:#0f1115;
+      color:#f5f5f5;
+      line-height:1.6;
+    }
 
-body{
-font-family: Arial, sans-serif;
-background:#0f0f0f;
-color:white;
-margin:0;
-}
+    .container{
+      width:min(1100px, 92%);
+      margin:0 auto;
+    }
 
-header{
-text-align:center;
-padding:70px 20px;
-background:#151515;
-}
+    header{
+      padding:70px 0 50px;
+      background:linear-gradient(180deg,#11151c 0%, #0f1115 100%);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
 
-h1{
-font-size:42px;
-margin-bottom:10px;
-}
+    .hero h1{
+      margin:0 0 10px;
+      font-size:44px;
+      letter-spacing:0.5px;
+    }
 
-h2{
-margin-top:50px;
-}
+    .hero h2{
+      margin:0;
+      font-size:22px;
+      color:#d4d4d4;
+      font-weight:600;
+    }
 
-.projects{
-max-width:900px;
-margin:auto;
-padding:40px 20px;
-}
+    .hero p{
+      margin:18px 0 0;
+      max-width:850px;
+      color:#bdbdbd;
+      font-size:16px;
+    }
 
-.project{
-background:#1e1e1e;
-padding:25px;
-margin-bottom:25px;
-border-radius:10px;
-}
+    .section{
+      padding:42px 0;
+    }
 
-.project h3{
-margin-top:0;
-}
+    .section-title{
+      font-size:30px;
+      margin:0 0 18px;
+    }
 
-footer{
-text-align:center;
-padding:40px;
-background:#151515;
-}
+    .card{
+      background:#171b22;
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:16px;
+      padding:22px;
+      margin-bottom:18px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.18);
+    }
 
-a{
-color:#4da6ff;
-text-decoration:none;
-}
+    .card h3{
+      margin:0 0 10px;
+      font-size:22px;
+    }
 
-</style>
+    .tr{
+      color:#d9d9d9;
+      margin-top:10px;
+    }
+
+    .en{
+      color:#aeb7c2;
+      margin-top:10px;
+    }
+
+    .tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:16px;
+    }
+
+    .tag{
+      display:inline-block;
+      padding:8px 12px;
+      background:#222834;
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:999px;
+      font-size:13px;
+      color:#dce7f3;
+    }
+
+    .skills{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .contact a{
+      color:#7ec3ff;
+      text-decoration:none;
+    }
+
+    .contact a:hover{
+      text-decoration:underline;
+    }
+
+    footer{
+      border-top:1px solid rgba(255,255,255,0.08);
+      padding:28px 0 40px;
+      color:#9aa4b2;
+      text-align:center;
+    }
+
+    @media (max-width:768px){
+      .hero h1{
+        font-size:34px;
+      }
+
+      .hero h2{
+        font-size:18px;
+      }
+
+      .section-title{
+        font-size:25px;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<header>
+  <header>
+    <div class="container hero">
+      <h1>Serkan SEVİMGÜL</h1>
+      <h2>Senior Product Development Design Specialist</h2>
 
-<h1>Serkan SEVİMGÜL</h1>
+      <p class="en">
+        Mechanical Design | Industrial Vehicle Systems | Product Development
+      </p>
 
-<h3>Senior Product Development Design Specialist</h3>
+      <p class="tr">
+        Mekanik Tasarım | Endüstriyel Araç Sistemleri | Ürün Geliştirme
+      </p>
+    </div>
+  </header>
 
-<p>Mechanical Design | Industrial Vehicle Systems | Product Development</p>
+  <main class="container">
 
-</header>
+    <section class="section">
+      <h2 class="section-title">About / Hakkımda</h2>
 
-<div class="projects">
+      <div class="card">
+        <p class="en">
+          Mechanical design and product development specialist with more than 6 years of experience in industrial vehicle systems.
+          Experienced in CAD modeling, sheet metal design, product structures and engineering documentation using SolidWorks,
+          AutoCAD, PDM and CANIAS ERP.
+        </p>
 
-<h2>Engineering Projects</h2>
+        <p class="tr">
+          Endüstriyel araç sistemleri, mekanik tasarım ve ürün geliştirme alanında 6 yılı aşkın deneyime sahibim.
+          SolidWorks, AutoCAD, PDM ve CANIAS ERP kullanarak CAD modelleme, sac metal tasarımı,
+          ürün ağaçları ve üretim dokümantasyonu üzerinde çalışıyorum.
+        </p>
+      </div>
+    </section>
 
-<div class="project">
-<h3>Movable Front Water Spray Bar System</h3>
-<p>Adjustable front spray bar designed for vacuum road sweepers to improve dust suppression and water distribution during sweeping operations.</p>
-</div>
+    <section class="section">
+      <h2 class="section-title">Skills / Yetkinlikler</h2>
 
-<div class="project">
-<h3>Triple Brush Sweeping System</h3>
-<p>Multi-brush sweeping mechanism developed to increase road cleaning efficiency and debris collection coverage in vacuum sweeping vehicles.</p>
-</div>
+      <div class="card">
+        <div class="skills">
+          <span class="tag">SolidWorks</span>
+          <span class="tag">AutoCAD</span>
+          <span class="tag">PDM</span>
+          <span class="tag">CANIAS ERP</span>
+          <span class="tag">Mechanical Design</span>
+          <span class="tag">Product Development</span>
+          <span class="tag">Sheet Metal Design</span>
+          <span class="tag">Technical Drawing</span>
+          <span class="tag">Assembly Design</span>
+          <span class="tag">Engineering Documentation</span>
+        </div>
+      </div>
+    </section>
 
-<div class="project">
-<h3>Airport Runway Sweeping Adaptation</h3>
-<p>Engineering adaptation of vacuum road sweepers for large-scale airport runway cleaning with improved durability and operational coverage.</p>
-</div>
+    <section class="section">
+      <h2 class="section-title">Engineering Projects / Mühendislik Projeleri</h2>
 
-<div class="project">
-<h3>Heated Airport Sweeping Undercarriage</h3>
-<p>Cold-climate undercarriage sweeping system with heating capability designed for reliable operation in regions such as Russia.</p>
-</div>
+      <div class="card">
+        <h3>Movable Front Water Spray Bar System</h3>
+        <p class="en">
+          Adjustable front spray bar designed for vacuum road sweepers to improve dust suppression and water distribution during sweeping operations.
+        </p>
+        <p class="tr">
+          Vakumlu yol süpürme araçlarında süpürme sırasında toz bastırmayı ve su dağılımını iyileştirmek için tasarlanmış hareketli ön sulama barı sistemi.
+        </p>
+      </div>
 
-<div class="project">
-<h3>Magnetic Metal Collection System</h3>
-<p>Front mounted magnetic system designed to collect ferrous metal debris such as nails and bolts during sweeping operations.</p>
-</div>
+      <div class="card">
+        <h3>Triple Brush Sweeping System</h3>
+        <p class="en">
+          Multi-brush sweeping mechanism developed to increase road cleaning efficiency and debris collection coverage in vacuum sweeping vehicles.
+        </p>
+        <p class="tr">
+          Vakumlu süpürme araçlarında yol temizleme verimini ve atık toplama kapsama alanını artırmak için geliştirilen çoklu fırça süpürme mekanizması.
+        </p>
+      </div>
 
-<div class="project">
-<h3>Dust Prevention System</h3>
-<p>Engineering solution developed to reduce dust emission during dry vacuum sweeping while maintaining a clean road surface finish.</p>
-</div>
+      <div class="card">
+        <h3>Airport Runway Sweeping Adaptation</h3>
+        <p class="en">
+          Engineering adaptation of vacuum road sweepers for large-scale airport runway cleaning with improved durability and operational coverage.
+        </p>
+        <p class="tr">
+          Vakumlu yol süpürme araçlarının havaalanı pistlerinde geniş ölçekli temizlik için dayanıklılığı ve operasyonel kapsama alanı artırılarak uyarlanması.
+        </p>
+      </div>
 
-</div>
+      <div class="card">
+        <h3>Heated Airport Sweeping Undercarriage</h3>
+        <p class="en">
+          Cold-climate undercarriage sweeping system with heating capability designed for reliable operation in regions such as Russia.
+        </p>
+        <p class="tr">
+          Rusya gibi soğuk bölgelerde güvenilir çalışma için tasarlanmış, ısıtma özellikli alt takım süpürme sistemi.
+        </p>
+      </div>
 
-<footer>
+      <div class="card">
+        <h3>Magnetic Metal Collection System</h3>
+        <p class="en">
+          Front mounted magnetic system designed to collect ferrous metal debris such as nails and bolts during sweeping operations.
+        </p>
+        <p class="tr">
+          Süpürme sırasında çivi, cıvata gibi metal atıkları toplamak için tasarlanmış ön konumlu mıknatıs metal toplama sistemi.
+        </p>
+      </div>
 
-<p>Contact</p>
+      <div class="card">
+        <h3>Dust Prevention System</h3>
+        <p class="en">
+          Engineering solution developed to reduce dust emission during dry vacuum sweeping while maintaining a clean road surface finish.
+        </p>
+        <p class="tr">
+          Kuru vakumlu süpürme sırasında toz emisyonunu azaltırken temiz bir yol yüzeyi elde etmeyi amaçlayan mühendislik çözümü.
+        </p>
+      </div>
+    </section>
 
-<p>
-<a href="mailto:serkansevimgul@gmail.com">serkansevimgul@gmail.com</a>
-</p>
+    <section class="section contact">
+      <h2 class="section-title">Contact / İletişim</h2>
 
-<p>
-<a href="https://tr.linkedin.com/in/serkan-sevimg%C3%BCl-9616261a1">
-LinkedIn Profile
-</a>
-</p>
+      <div class="card">
+        <p><strong>Email:</strong> <a href="mailto:serkansevimgul@gmail.com">serkansevimgul@gmail.com</a></p>
+        <p><strong>LinkedIn:</strong> <a href="https://tr.linkedin.com/in/serkan-sevimg%C3%BCl-9616261a1" target="_blank">linkedin.com/in/serkan-sevimgül-9616261a1</a></p>
+      </div>
+    </section>
 
-</footer>
+  </main>
+
+  <footer>
+    © 2026 Serkan SEVİMGÜL — Engineering Portfolio
+  </footer>
 
 </body>
 </html>
