@@ -103,6 +103,15 @@
       box-shadow:0 10px 28px rgba(0,0,0,0.22);
     }
 
+    .card h3{
+      margin:0 0 10px;
+      font-size:22px;
+    }
+
+    .muted{
+      color:#aab4c0;
+    }
+
     .skills{
       display:flex;
       flex-wrap:wrap;
@@ -117,6 +126,12 @@
       border-radius:999px;
       font-size:13px;
       color:#e3ecf6;
+    }
+
+    .two-col{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
     }
 
     .projects-grid{
@@ -183,6 +198,29 @@
       border:1px solid rgba(255,255,255,0.08);
     }
 
+    .list-block{
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+
+    .list-item{
+      padding:18px;
+      border-radius:14px;
+      background:#101722;
+      border:1px solid rgba(255,255,255,0.06);
+    }
+
+    .list-item h4{
+      margin:0 0 6px;
+      font-size:18px;
+    }
+
+    .list-item p{
+      margin:4px 0;
+      color:#c6ced8;
+    }
+
     .video-box{
       background:#131a24;
       border:1px solid rgba(255,255,255,0.08);
@@ -222,7 +260,8 @@
     }
 
     @media (max-width: 900px){
-      .projects-grid{
+      .projects-grid,
+      .two-col{
         grid-template-columns:1fr;
       }
 
@@ -268,16 +307,80 @@
       <h2 class="section-title">About / Hakkımda</h2>
       <div class="card">
         <p>
-          Mechanical design and product development specialist with more than 6 years of experience in industrial vehicle systems.
-          Experienced in CAD modeling, sheet metal design, product structures and engineering documentation using SolidWorks,
-          AutoCAD, PDM and CANIAS ERP.
+          Mechanical design and product development specialist with more than 6 years of experience in industrial vehicle systems and municipal equipment.
+          Currently working in the product development department at Çeksan Road Sweeping Vehicles, focusing on the design and development of mechanical systems
+          for vacuum road sweepers and industrial cleaning vehicles. My work includes CAD modeling, sheet metal design, product structures, and preparation of
+          engineering documentation using SolidWorks, AutoCAD, PDM and CANIAS ERP systems.
         </p>
 
         <p>
-          Endüstriyel araç sistemleri, mekanik tasarım ve ürün geliştirme alanında 6 yılı aşkın deneyime sahibim.
-          SolidWorks, AutoCAD, PDM ve CANIAS ERP kullanarak CAD modelleme, sac metal tasarımı,
-          ürün ağaçları ve üretim dokümantasyonu üzerinde çalışıyorum.
+          Endüstriyel araç sistemleri ve belediye ekipmanları alanında 6 yılı aşkın deneyime sahip mekanik tasarım ve ürün geliştirme uzmanıyım.
+          Şu anda Çeksan Yol Süpürme Araçları firmasında ürün geliştirme bölümünde çalışarak vakumlu yol süpürme araçları ve endüstriyel temizlik araçları için
+          mekanik sistemlerin tasarım ve geliştirme süreçlerinde görev almaktayım. SolidWorks, AutoCAD, PDM ve CANIAS ERP sistemlerini kullanarak CAD modelleme,
+          sac metal tasarımı, ürün ağaçları ve üretim dokümantasyonu üzerinde çalışıyorum.
         </p>
+
+        <p>
+          Throughout my career I have been involved in the development of multiple vehicle subsystems such as sweeping mechanisms, water spray systems,
+          magnetic debris collection systems, and cold-climate adaptations for airport sweeping operations. My focus is on practical engineering solutions,
+          manufacturable designs, and improving the operational efficiency of industrial vehicles.
+        </p>
+
+        <p>
+          Kariyerim boyunca süpürme mekanizmaları, su püskürtme sistemleri, metal atık toplama mıknatıs sistemleri ve soğuk iklim koşullarına uygun havaalanı
+          süpürme sistemleri gibi birçok araç alt sisteminin geliştirilmesinde yer aldım. Odak noktam üretilebilir tasarımlar geliştirmek, mühendislik çözümlerini
+          pratik hale getirmek ve endüstriyel araçların operasyonel verimliliğini artırmaktır.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="two-col">
+        <div>
+          <h2 class="section-title">Experience / Deneyim</h2>
+          <div class="card list-block">
+            <div class="list-item">
+              <h4>Çeksan Road Sweeping Vehicles</h4>
+              <p><strong>Senior Product Development Design Specialist</strong></p>
+              <p class="muted">2019 - Present</p>
+              <p>
+                Mechanical design, sheet metal development, product improvement, cost reduction studies, vehicle layouts, and manufacturing-oriented engineering documentation.
+              </p>
+              <p>
+                Mekanik tasarım, sac metal geliştirme, ürün iyileştirme, maliyet düşürme çalışmaları, araç yerleşimleri ve üretime yönelik mühendislik dokümantasyonu.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="section-title">Education / Eğitim</h2>
+          <div class="card list-block">
+            <div class="list-item">
+              <h4>Ege University</h4>
+              <p><strong>Associate Degree - Mechanical Technology</strong></p>
+              <p class="muted">2017 - 2019</p>
+              <p>
+                Technical education focused on mechanical systems, manufacturing, machine design and engineering fundamentals.
+              </p>
+              <p>
+                Mekanik sistemler, üretim, makine tasarımı ve mühendislik temellerine odaklanan teknik eğitim.
+              </p>
+            </div>
+
+            <div class="list-item">
+              <h4>Bergama Vocational and Technical Anatolian High School</h4>
+              <p><strong>Machine Technology</strong></p>
+              <p class="muted">Graduated in 2016</p>
+              <p>
+                Vocational education in machine manufacturing, technical drawing and workshop-based production practices.
+              </p>
+              <p>
+                Makine imalatı, teknik resim ve atölye tabanlı üretim uygulamalarını kapsayan mesleki eğitim.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
