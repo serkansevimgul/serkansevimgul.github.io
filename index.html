@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Serkan Sevimgül | Mechanical Design Portfolio</title>
-  <meta name="description" content="Serkan Sevimgül mekanik tasarım ve ürün geliştirme portfolyosu." />
+  <meta name="description" content="Serkan Sevimgül mechanical design and product development portfolio." />
   <style>
     :root{
       --bg:#0b0b0d;
@@ -76,6 +76,13 @@
 
     .brand span{color:var(--yellow)}
 
+    .nav-right{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
     .nav-links{
       display:flex;
       gap:18px;
@@ -89,6 +96,32 @@
     }
 
     .nav-links a:hover{color:#fff}
+
+    .lang-switch{
+      display:flex;
+      gap:8px;
+      padding:4px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      border-radius:999px;
+    }
+
+    .lang-btn{
+      border:none;
+      background:transparent;
+      color:#fff;
+      padding:8px 12px;
+      border-radius:999px;
+      cursor:pointer;
+      font-weight:700;
+      font-size:12px;
+      transition:.25s ease;
+    }
+
+    .lang-btn.active{
+      background:var(--yellow);
+      color:#111;
+    }
 
     .hero{
       padding:76px 0 42px;
@@ -699,6 +732,12 @@
         flex-direction:column;
       }
 
+      .nav-right{
+        width:100%;
+        align-items:flex-start;
+        flex-direction:column;
+      }
+
       .stats,
       .cert-grid,
       .tools-grid{
@@ -732,12 +771,18 @@
   <nav class="navbar">
     <div class="container nav-inner">
       <div class="brand">Serkan <span>Sevimgül</span></div>
-      <div class="nav-links">
-        <a href="#about">Hakkımda</a>
-        <a href="#tools">Araçlar</a>
-        <a href="#projects">Projeler</a>
-        <a href="#certificates">Sertifikalar</a>
-        <a href="#contact">İletişim</a>
+      <div class="nav-right">
+        <div class="nav-links">
+          <a href="#about" data-i18n="nav_about">Hakkımda</a>
+          <a href="#tools" data-i18n="nav_tools">Araçlar</a>
+          <a href="#projects" data-i18n="nav_projects">Projeler</a>
+          <a href="#certificates" data-i18n="nav_certificates">Sertifikalar</a>
+          <a href="#contact" data-i18n="nav_contact">İletişim</a>
+        </div>
+        <div class="lang-switch">
+          <button class="lang-btn active" data-lang="tr">TR</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
       </div>
     </div>
   </nav>
@@ -746,34 +791,34 @@
     <div class="container">
       <div class="hero-grid">
         <div class="reveal">
-          <div class="eyebrow">Mechanical Design • Product Development • Industrial Vehicle Systems</div>
+          <div class="eyebrow" data-i18n="hero_eyebrow">Mechanical Design • Product Development • Industrial Vehicle Systems</div>
           <h1>Serkan Sevimgül</h1>
-          <p>
+          <p data-i18n="hero_p1">
             Endüstriyel araç sistemleri, mekanik tasarım ve üretilebilir ürün geliştirme odaklı çalışan
             bir tasarım uzmanıyım. Tasarımlarımı sadece CAD üzerinde değil, sahada gerçekten çalışan,
             üretilebilir ve servis edilebilir çözümler olarak ele alıyorum.
           </p>
-          <p>
+          <p data-i18n="hero_p2">
             Yol süpürme araçları, fırça sistemleri, su püskürtme barları, manyetik toplama sistemleri
             ve özel iklim koşullarına uygun mekanik çözümler üzerinde çalışıyorum.
           </p>
 
           <div class="stats">
             <div class="stat">
-              <div class="label">Deneyim</div>
-              <div class="value">6+ Yıl</div>
+              <div class="label" data-i18n="stat_exp_label">Deneyim</div>
+              <div class="value" data-i18n="stat_exp_value">6+ Yıl</div>
             </div>
             <div class="stat">
-              <div class="label">Odak Alanı</div>
-              <div class="value">Mekanik Tasarım</div>
+              <div class="label" data-i18n="stat_focus_label">Odak Alanı</div>
+              <div class="value" data-i18n="stat_focus_value">Mekanik Tasarım</div>
             </div>
             <div class="stat">
-              <div class="label">Araçlar</div>
-              <div class="value">SolidWorks + AutoCAD</div>
+              <div class="label" data-i18n="stat_tools_label">Araçlar</div>
+              <div class="value" data-i18n="stat_tools_value">SolidWorks + AutoCAD</div>
             </div>
             <div class="stat">
-              <div class="label">Yaklaşım</div>
-              <div class="value">Saha Odaklı</div>
+              <div class="label" data-i18n="stat_approach_label">Yaklaşım</div>
+              <div class="value" data-i18n="stat_approach_value">Saha Odaklı</div>
             </div>
           </div>
         </div>
@@ -781,8 +826,8 @@
         <div class="hero-card reveal">
           <img src="profile.jpg" alt="Serkan Sevimgül profil fotoğrafı">
           <div class="hero-card-info">
-            <h3>Product Development Design Specialist</h3>
-            <p>
+            <h3 data-i18n="hero_card_title">Product Development Design Specialist</h3>
+            <p data-i18n="hero_card_p">
               Endüstriyel araçlarda mekanik sistem geliştirme, teknik resim, montaj yapıları,
               üretim uygunluğu ve saha verisine göre ürün iyileştirme.
             </p>
@@ -795,9 +840,9 @@
   <section id="about">
     <div class="container">
       <div class="section-title reveal">
-        <div class="mini">Hakkımda</div>
-        <h2>Mühendislikte sahadaki gerçekliği merkeze alıyorum</h2>
-        <p>
+        <div class="mini" data-i18n="about_mini">Hakkımda</div>
+        <h2 data-i18n="about_title">Mühendislikte sahadaki gerçekliği merkeze alıyorum</h2>
+        <p data-i18n="about_p">
           Amacım sadece iyi görünen tasarımlar üretmek değil; üretimde uygulanabilir,
           montajda sorun çıkarmayan, kullanım sırasında verim sağlayan ve bakım tarafında
           mantıklı çözümler geliştirmek.
@@ -806,15 +851,15 @@
 
       <div class="about-grid">
         <div class="panel reveal">
-          <h3>Profesyonel Bakış</h3>
-          <p>
+          <h3 data-i18n="about_panel1_title">Profesyonel Bakış</h3>
+          <p data-i18n="about_panel1_p">
             Ürün geliştirme sürecinde CAD doğruluğunu, üretim gerçekleriyle birlikte ele alıyorum.
             Mekanik sistemlerin hem çizimde hem sahada doğru çalışması benim için temel öncelik.
           </p>
         </div>
 
         <div class="panel reveal">
-          <h3>Yetkinlikler</h3>
+          <h3 data-i18n="about_panel2_title">Yetkinlikler</h3>
           <div class="tags">
             <span class="tag">SolidWorks</span>
             <span class="tag">AutoCAD</span>
@@ -837,9 +882,9 @@
   <section id="tools">
     <div class="container">
       <div class="section-title reveal">
-        <div class="mini">Kullandığım Araçlar</div>
-        <h2>Tasarımdan dokümantasyona kullandığım başlıca araçlar</h2>
-        <p>
+        <div class="mini" data-i18n="tools_mini">Kullandığım Araçlar</div>
+        <h2 data-i18n="tools_title">Tasarımdan dokümantasyona kullandığım başlıca araçlar</h2>
+        <p data-i18n="tools_p">
           Ürün geliştirme sürecinde tasarım, teknik çizim, veri yönetimi ve kurumsal süreç takibi için aktif olarak kullandığım araçlar aşağıda yer almaktadır.
         </p>
       </div>
@@ -850,7 +895,9 @@
             <svg viewBox="0 0 24 24"><path d="M4 4h7v7H4V4zm9 0h7v7h-7V4zM4 13h7v7H4v-7zm9 2h7v3h-7v-3z"/></svg>
           </div>
           <h3>SolidWorks</h3>
-          <p>3D modelleme, montaj tasarımı, teknik resim ve mekanik sistem geliştirme süreçlerinde aktif olarak kullanıyorum.</p>
+          <p data-i18n="tool_sw">
+            3D modelleme, montaj tasarımı, teknik resim ve mekanik sistem geliştirme süreçlerinde aktif olarak kullanıyorum.
+          </p>
         </div>
 
         <div class="tool-card reveal">
@@ -858,7 +905,9 @@
             <svg viewBox="0 0 24 24"><path d="M3 17l6-10 4 6 3-4 5 8H3z"/></svg>
           </div>
           <h3>AutoCAD</h3>
-          <p>2D teknik çizimler, üretim detayları ve proje dokümantasyonu için kullandığım temel araçlardan biridir.</p>
+          <p data-i18n="tool_acad">
+            2D teknik çizimler, üretim detayları ve proje dokümantasyonu için kullandığım temel araçlardan biridir.
+          </p>
         </div>
 
         <div class="tool-card reveal">
@@ -866,7 +915,9 @@
             <svg viewBox="0 0 24 24"><path d="M5 4h10l4 4v12H5V4zm9 1.5V9h3.5L14 5.5zM8 13h8v2H8v-2zm0 4h8v2H8v-2z"/></svg>
           </div>
           <h3>PDM</h3>
-          <p>Dosya yönetimi, revizyon kontrolü ve mühendislik verilerinin düzenli takibi için kullanıyorum.</p>
+          <p data-i18n="tool_pdm">
+            Dosya yönetimi, revizyon kontrolü ve mühendislik verilerinin düzenli takibi için kullanıyorum.
+          </p>
         </div>
 
         <div class="tool-card reveal">
@@ -874,7 +925,9 @@
             <svg viewBox="0 0 24 24"><path d="M4 5h16v4H4V5zm0 5h16v4H4v-4zm0 5h16v4H4v-4z"/></svg>
           </div>
           <h3>CANIAS ERP</h3>
-          <p>Kurumsal süreçler, ürün verileri ve üretimle ilişkili operasyonel akışların takibinde yararlandığım sistemdir.</p>
+          <p data-i18n="tool_canias">
+            Kurumsal süreçler, ürün verileri ve üretimle ilişkili operasyonel akışların takibinde yararlandığım sistemdir.
+          </p>
         </div>
 
         <div class="tool-card reveal">
@@ -882,7 +935,9 @@
             <svg viewBox="0 0 24 24"><path d="M12 2l3 6 6 3-6 3-3 6-3-6-6-3 6-3 3-6z"/></svg>
           </div>
           <h3>Mechanical Design</h3>
-          <p>Mekanik sistem kurgusu, işlevsel çözüm üretimi, montaj uyumu ve saha gerçeklerine uygun tasarım yaklaşımıyla çalışıyorum.</p>
+          <p data-i18n="tool_md">
+            Mekanik sistem kurgusu, işlevsel çözüm üretimi, montaj uyumu ve saha gerçeklerine uygun tasarım yaklaşımıyla çalışıyorum.
+          </p>
         </div>
 
         <div class="tool-card reveal">
@@ -890,7 +945,9 @@
             <svg viewBox="0 0 24 24"><path d="M12 3l9 5v8l-9 5-9-5V8l9-5zm0 2.2L5 9v6l7 3.8 7-3.8V9l-7-3.8z"/></svg>
           </div>
           <h3>Product Development</h3>
-          <p>İhtiyaç analizi, tasarım iyileştirme, üretilebilirlik ve ürünün sahadaki performansını birlikte düşünerek geliştirme yapıyorum.</p>
+          <p data-i18n="tool_pd">
+            İhtiyaç analizi, tasarım iyileştirme, üretilebilirlik ve ürünün sahadaki performansını birlikte düşünerek geliştirme yapıyorum.
+          </p>
         </div>
       </div>
     </div>
@@ -899,9 +956,9 @@
   <section id="projects">
     <div class="container">
       <div class="section-title reveal">
-        <div class="mini">Seçili Projeler</div>
-        <h2>Üzerinde çalıştığım projeler</h2>
-        <p>
+        <div class="mini" data-i18n="projects_mini">Seçili Projeler</div>
+        <h2 data-i18n="projects_title">Üzerinde çalıştığım projeler</h2>
+        <p data-i18n="projects_p">
           Aşağıda yer alan projeler, mekanik tasarım ve ürün geliştirme alanında edindiğim tecrübeyi yansıtmaktadır.
           Her projede ihtiyacı doğru analiz edip uygulanabilir, üretilebilir ve saha koşullarına uygun çözümler geliştirmeyi hedefledim.
         </p>
@@ -916,13 +973,13 @@
             <div class="project-top">
               <div>
                 <h3>Water Spray Bar System</h3>
-                <p class="project-sub">Ayarlanabilir ön su püskürtme barı sistemi</p>
+                <p class="project-sub" data-i18n="proj1_sub">Ayarlanabilir ön su püskürtme barı sistemi</p>
               </div>
-              <div class="project-badge">Industrial Vehicle</div>
+              <div class="project-badge" data-i18n="badge_industrial">Industrial Vehicle</div>
             </div>
-            <p class="case-line"><strong>İhtiyaç:</strong> Süpürme sırasında toz kontrolünü daha verimli hale getirmek ve su dağılımını daha kontrollü sağlamak.</p>
-            <p class="case-line"><strong>Çözüm:</strong> Ön tarafa entegre edilen hareketli ve ayarlanabilir su püskürtme barı tasarımı geliştirildi.</p>
-            <p class="case-line"><strong>Sonuç:</strong> Çalışma yüzeyinde daha dengeli su dağılımı ve daha iyi toz bastırma performansı hedeflendi.</p>
+            <p class="case-line"><strong data-i18n="need_label">İhtiyaç:</strong> <span data-i18n="proj1_need">Süpürme sırasında toz kontrolünü daha verimli hale getirmek ve su dağılımını daha kontrollü sağlamak.</span></p>
+            <p class="case-line"><strong data-i18n="solution_label">Çözüm:</strong> <span data-i18n="proj1_solution">Ön tarafa entegre edilen hareketli ve ayarlanabilir su püskürtme barı tasarımı geliştirildi.</span></p>
+            <p class="case-line"><strong data-i18n="result_label">Sonuç:</strong> <span data-i18n="proj1_result">Çalışma yüzeyinde daha dengeli su dağılımı ve daha iyi toz bastırma performansı hedeflendi.</span></p>
             <div class="tags">
               <span class="tag">Mechanical Design</span>
               <span class="tag">SolidWorks</span>
@@ -939,13 +996,13 @@
             <div class="project-top">
               <div>
                 <h3>Triple Brush Sweeping System</h3>
-                <p class="project-sub">Daha geniş temizleme alanı ve yüksek verim</p>
+                <p class="project-sub" data-i18n="proj2_sub">Daha geniş temizleme alanı ve yüksek verim</p>
               </div>
-              <div class="project-badge">Sweeping System</div>
+              <div class="project-badge" data-i18n="badge_sweeping">Sweeping System</div>
             </div>
-            <p class="case-line"><strong>İhtiyaç:</strong> Temizleme genişliğini artırmak ve yüzey süpürme verimini iyileştirmek.</p>
-            <p class="case-line"><strong>Çözüm:</strong> Çoklu fırça yapısına sahip, çalışma alanını genişleten ve mekanik uyumu gözeten sistem tasarımı geliştirildi.</p>
-            <p class="case-line"><strong>Sonuç:</strong> Süpürme kapsamını artıran ve operasyonel verimliliği destekleyen yapı ortaya çıkarıldı.</p>
+            <p class="case-line"><strong data-i18n="need_label">İhtiyaç:</strong> <span data-i18n="proj2_need">Temizleme genişliğini artırmak ve yüzey süpürme verimini iyileştirmek.</span></p>
+            <p class="case-line"><strong data-i18n="solution_label">Çözüm:</strong> <span data-i18n="proj2_solution">Çoklu fırça yapısına sahip, çalışma alanını genişleten ve mekanik uyumu gözeten sistem tasarımı geliştirildi.</span></p>
+            <p class="case-line"><strong data-i18n="result_label">Sonuç:</strong> <span data-i18n="proj2_result">Süpürme kapsamını artıran ve operasyonel verimliliği destekleyen yapı ortaya çıkarıldı.</span></p>
             <div class="tags">
               <span class="tag">Assembly Design</span>
               <span class="tag">Mechanism Design</span>
@@ -962,13 +1019,13 @@
             <div class="project-top">
               <div>
                 <h3>Heated Undercarriage</h3>
-                <p class="project-sub">Soğuk hava ve zorlu iklimler için özel çözüm</p>
+                <p class="project-sub" data-i18n="proj3_sub">Soğuk hava ve zorlu iklimler için özel çözüm</p>
               </div>
-              <div class="project-badge">Cold Climate</div>
+              <div class="project-badge" data-i18n="badge_cold">Cold Climate</div>
             </div>
-            <p class="case-line"><strong>İhtiyaç:</strong> Düşük sıcaklıklarda çalışan araçlarda performans sürekliliğini desteklemek.</p>
-            <p class="case-line"><strong>Çözüm:</strong> Özellikle zorlu iklim koşullarına uygun alt sistem yaklaşımıyla ısı destekli yapı tasarlandı.</p>
-            <p class="case-line"><strong>Sonuç:</strong> Kış şartlarında operasyon güvenilirliğini destekleyen daha dayanıklı bir çözüm ortaya kondu.</p>
+            <p class="case-line"><strong data-i18n="need_label">İhtiyaç:</strong> <span data-i18n="proj3_need">Düşük sıcaklıklarda çalışan araçlarda performans sürekliliğini desteklemek.</span></p>
+            <p class="case-line"><strong data-i18n="solution_label">Çözüm:</strong> <span data-i18n="proj3_solution">Özellikle zorlu iklim koşullarına uygun alt sistem yaklaşımıyla ısı destekli yapı tasarlandı.</span></p>
+            <p class="case-line"><strong data-i18n="result_label">Sonuç:</strong> <span data-i18n="proj3_result">Kış şartlarında operasyon güvenilirliğini destekleyen daha dayanıklı bir çözüm ortaya kondu.</span></p>
             <div class="tags">
               <span class="tag">Undercarriage</span>
               <span class="tag">Winter Operation</span>
@@ -985,13 +1042,13 @@
             <div class="project-top">
               <div>
                 <h3>Magnetic Collection System</h3>
-                <p class="project-sub">Metal parçacık toplama için manyetik çözüm</p>
+                <p class="project-sub" data-i18n="proj4_sub">Metal parçacık toplama için manyetik çözüm</p>
               </div>
-              <div class="project-badge">Field Solution</div>
+              <div class="project-badge" data-i18n="badge_field">Field Solution</div>
             </div>
-            <p class="case-line"><strong>İhtiyaç:</strong> Yüzeyde bulunan metal parçaların güvenli şekilde toplanabilmesi.</p>
-            <p class="case-line"><strong>Çözüm:</strong> Araç ön yapısına entegre edilen manyetik toplama sistemi tasarlandı.</p>
-            <p class="case-line"><strong>Sonuç:</strong> Ferromanyetik atıkların toplanmasını destekleyen daha güvenli ve işlevsel bir sistem elde edildi.</p>
+            <p class="case-line"><strong data-i18n="need_label">İhtiyaç:</strong> <span data-i18n="proj4_need">Yüzeyde bulunan metal parçaların güvenli şekilde toplanabilmesi.</span></p>
+            <p class="case-line"><strong data-i18n="solution_label">Çözüm:</strong> <span data-i18n="proj4_solution">Araç ön yapısına entegre edilen manyetik toplama sistemi tasarlandı.</span></p>
+            <p class="case-line"><strong data-i18n="result_label">Sonuç:</strong> <span data-i18n="proj4_result">Ferromanyetik atıkların toplanmasını destekleyen daha güvenli ve işlevsel bir sistem elde edildi.</span></p>
             <div class="tags">
               <span class="tag">System Integration</span>
               <span class="tag">Magnetic Collection</span>
@@ -1006,90 +1063,90 @@
   <section id="certificates">
     <div class="container">
       <div class="section-title reveal">
-        <div class="mini">Sertifikalar</div>
-        <h2>Eğitim ve gelişim alanlarım</h2>
-        <p>
+        <div class="mini" data-i18n="cert_mini">Sertifikalar</div>
+        <h2 data-i18n="cert_title">Eğitim ve gelişim alanlarım</h2>
+        <p data-i18n="cert_p">
           Bu bölümde yer alan sertifikalar, teknik bilgi birikimimi ve mesleki gelişime verdiğim önemi yansıtmaktadır.
         </p>
       </div>
 
       <div class="filter-bar reveal">
-        <button class="filter-btn active" data-filter="all">Tümü</button>
-        <button class="filter-btn" data-filter="solidworks">SolidWorks</button>
-        <button class="filter-btn" data-filter="management">Yönetim</button>
-        <button class="filter-btn" data-filter="quality">Kalite</button>
-        <button class="filter-btn" data-filter="other">Diğer</button>
+        <button class="filter-btn active" data-filter="all" data-i18n="filter_all">Tümü</button>
+        <button class="filter-btn" data-filter="solidworks" data-i18n="filter_solidworks">SolidWorks</button>
+        <button class="filter-btn" data-filter="management" data-i18n="filter_management">Yönetim</button>
+        <button class="filter-btn" data-filter="quality" data-i18n="filter_quality">Kalite</button>
+        <button class="filter-btn" data-filter="other" data-i18n="filter_other">Diğer</button>
       </div>
 
       <div class="cert-grid">
         <div class="cert-card reveal" data-category="other" onclick="openLightbox('certificate-ford-trucks.jpg')">
           <img src="certificate-ford-trucks.jpg" alt="Ford Trucks certificate">
-          <div class="cert-body"><h4>Ford Trucks</h4><p>Kurumsal veya teknik gelişim sertifikası.</p></div>
+          <div class="cert-body"><h4>Ford Trucks</h4><p data-i18n="cert_ford">Kurumsal veya teknik gelişim sertifikası.</p></div>
         </div>
 
         <div class="cert-card reveal" data-category="management" onclick="openLightbox('certificate-project-management.jpg')">
           <img src="certificate-project-management.jpg" alt="Project Management certificate">
-          <div class="cert-body"><h4>Project Management</h4><p>Proje yönetimi odaklı eğitim sertifikası.</p></div>
+          <div class="cert-body"><h4>Project Management</h4><p data-i18n="cert_pm">Proje yönetimi odaklı eğitim sertifikası.</p></div>
         </div>
 
         <div class="cert-card reveal" data-category="quality" onclick="openLightbox('certificate-quality-control.jpg')">
           <img src="certificate-quality-control.jpg" alt="Quality Control certificate">
-          <div class="cert-body"><h4>Quality Control</h4><p>Kalite kontrol ve süreç yaklaşımı odaklı sertifika.</p></div>
+          <div class="cert-body"><h4>Quality Control</h4><p data-i18n="cert_qc">Kalite kontrol ve süreç yaklaşımı odaklı sertifika.</p></div>
         </div>
 
         <div class="cert-card reveal" data-category="solidworks" onclick="openLightbox('certificate-solidworks-advanced.jpg')">
           <img src="certificate-solidworks-advanced.jpg" alt="SolidWorks Advanced certificate">
-          <div class="cert-body"><h4>SolidWorks Advanced</h4><p>İleri seviye SolidWorks yetkinliği.</p></div>
+          <div class="cert-body"><h4>SolidWorks Advanced</h4><p data-i18n="cert_swa">İleri seviye SolidWorks yetkinliği.</p></div>
         </div>
 
         <div class="cert-card reveal" data-category="solidworks" onclick="openLightbox('certificate-solidworks-basic.jpg')">
           <img src="certificate-solidworks-basic.jpg" alt="SolidWorks Basic certificate">
-          <div class="cert-body"><h4>SolidWorks Basic</h4><p>Temel SolidWorks eğitimi.</p></div>
+          <div class="cert-body"><h4>SolidWorks Basic</h4><p data-i18n="cert_swb">Temel SolidWorks eğitimi.</p></div>
         </div>
 
         <div class="cert-card reveal" data-category="solidworks" onclick="openLightbox('certificate-solidworks-routing.jpg')">
           <img src="certificate-solidworks-routing.jpg" alt="SolidWorks Routing certificate">
-          <div class="cert-body"><h4>SolidWorks Routing</h4><p>Routing ve sistem yönlendirme eğitimi.</p></div>
+          <div class="cert-body"><h4>SolidWorks Routing</h4><p data-i18n="cert_swr">Routing ve sistem yönlendirme eğitimi.</p></div>
         </div>
 
         <div class="cert-card reveal" data-category="other" onclick="openLightbox('certificate-uagem.jpg')">
           <img src="certificate-uagem.jpg" alt="UAGEM certificate">
-          <div class="cert-body"><h4>UAGEM</h4><p>Eğitim veya uzmanlık geliştirme sertifikası.</p></div>
+          <div class="cert-body"><h4>UAGEM</h4><p data-i18n="cert_uagem">Eğitim veya uzmanlık geliştirme sertifikası.</p></div>
         </div>
 
         <div class="cert-card reveal" data-category="other" onclick="openLightbox('certificate1.jpg')">
           <img src="certificate1.jpg" alt="Certificate 1">
-          <div class="cert-body"><h4>Certificate 1</h4><p>Ek sertifika görseli.</p></div>
+          <div class="cert-body"><h4>Certificate 1</h4><p data-i18n="cert_extra">Ek sertifika görseli.</p></div>
         </div>
 
         <div class="cert-card reveal" data-category="other" onclick="openLightbox('certificate2.jpg')">
           <img src="certificate2.jpg" alt="Certificate 2">
-          <div class="cert-body"><h4>Certificate 2</h4><p>Ek sertifika görseli.</p></div>
+          <div class="cert-body"><h4>Certificate 2</h4><p data-i18n="cert_extra">Ek sertifika görseli.</p></div>
         </div>
 
         <div class="cert-card reveal" data-category="other" onclick="openLightbox('certificate3.jpg')">
           <img src="certificate3.jpg" alt="Certificate 3">
-          <div class="cert-body"><h4>Certificate 3</h4><p>Ek sertifika görseli.</p></div>
+          <div class="cert-body"><h4>Certificate 3</h4><p data-i18n="cert_extra">Ek sertifika görseli.</p></div>
         </div>
 
         <div class="cert-card reveal" data-category="other" onclick="openLightbox('certificate4.jpg')">
           <img src="certificate4.jpg" alt="Certificate 4">
-          <div class="cert-body"><h4>Certificate 4</h4><p>Ek sertifika görseli.</p></div>
+          <div class="cert-body"><h4>Certificate 4</h4><p data-i18n="cert_extra">Ek sertifika görseli.</p></div>
         </div>
 
         <div class="cert-card reveal" data-category="other" onclick="openLightbox('certificate5.jpg')">
           <img src="certificate5.jpg" alt="Certificate 5">
-          <div class="cert-body"><h4>Certificate 5</h4><p>Ek sertifika görseli.</p></div>
+          <div class="cert-body"><h4>Certificate 5</h4><p data-i18n="cert_extra">Ek sertifika görseli.</p></div>
         </div>
 
         <div class="cert-card reveal" data-category="other" onclick="openLightbox('certificate6.jpg')">
           <img src="certificate6.jpg" alt="Certificate 6">
-          <div class="cert-body"><h4>Certificate 6</h4><p>Ek sertifika görseli.</p></div>
+          <div class="cert-body"><h4>Certificate 6</h4><p data-i18n="cert_extra">Ek sertifika görseli.</p></div>
         </div>
 
         <div class="cert-card reveal" data-category="other" onclick="openLightbox('certificate7.jpg')">
           <img src="certificate7.jpg" alt="Certificate 7">
-          <div class="cert-body"><h4>Certificate 7</h4><p>Ek sertifika görseli.</p></div>
+          <div class="cert-body"><h4>Certificate 7</h4><p data-i18n="cert_extra">Ek sertifika görseli.</p></div>
         </div>
       </div>
     </div>
@@ -1098,15 +1155,15 @@
   <section id="contact">
     <div class="container">
       <div class="contact-box reveal">
-        <h3>İletişim</h3>
-        <p>
+        <h3 data-i18n="contact_title">İletişim</h3>
+        <p data-i18n="contact_p">
           Mekanik tasarım, ürün geliştirme, endüstriyel araç sistemleri ve mühendislik odaklı
           profesyonel bağlantılar için benimle iletişime geçebilirsiniz.
         </p>
         <div class="contact-details">
-          <div><strong>E-posta:</strong> <a href="mailto:serkansevimgul@gmail.com">serkansevimgul@gmail.com</a></div>
-          <div><strong>Telefon:</strong> <a href="tel:+905456261194">0545 626 11 94</a></div>
-          <div><strong>LinkedIn:</strong> <a href="https://tr.linkedin.com/in/serkan-sevimg%C3%BCl-9616261a1" target="_blank">Profilimi Görüntüle</a></div>
+          <div><strong data-i18n="email_label">E-posta:</strong> <a href="mailto:serkansevimgul@gmail.com">serkansevimgul@gmail.com</a></div>
+          <div><strong data-i18n="phone_label">Telefon:</strong> <a href="tel:+905456261194">0545 626 11 94</a></div>
+          <div><strong>LinkedIn:</strong> <a href="https://tr.linkedin.com/in/serkan-sevimg%C3%BCl-9616261a1" target="_blank" data-i18n="linkedin_view">Profilimi Görüntüle</a></div>
         </div>
       </div>
     </div>
@@ -1114,18 +1171,18 @@
 
   <footer>
     <div class="container">
-      © 2026 Serkan Sevimgül • Mechanical Design Portfolio
+      © 2026 Serkan Sevimgül • <span data-i18n="footer_text">Mechanical Design Portfolio</span>
     </div>
   </footer>
 
   <div class="floating-contact">
     <a class="floating-btn" href="tel:+905456261194" aria-label="Telefon">
-      <span>Telefon</span>
+      <span data-i18n="float_phone">Telefon</span>
       <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.7 5.1 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.3 1 .3 2 .5 3.1.5.7 0 1.3.6 1.3 1.3V20c0 .7-.6 1.3-1.3 1.3C10.5 21.3 2.7 13.5 2.7 4.3 2.7 3.6 3.3 3 4 3h3.3c.7 0 1.3.6 1.3 1.3 0 1.1.2 2.1.5 3.1.1.4 0 .9-.3 1.2l-2.2 2.2z"/></svg>
     </a>
 
     <a class="floating-btn" href="mailto:serkansevimgul@gmail.com" aria-label="Mail">
-      <span>Mail</span>
+      <span data-i18n="float_mail">Mail</span>
       <svg viewBox="0 0 24 24"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm0 2v.5l9 6 9-6V7H3zm18 10V9.7l-8.4 5.6a1 1 0 0 1-1.2 0L3 9.7V17h18z"/></svg>
     </a>
 
@@ -1148,6 +1205,233 @@
   </div>
 
   <script>
+    const translations = {
+      tr: {
+        nav_about: "Hakkımda",
+        nav_tools: "Araçlar",
+        nav_projects: "Projeler",
+        nav_certificates: "Sertifikalar",
+        nav_contact: "İletişim",
+
+        hero_eyebrow: "Mechanical Design • Product Development • Industrial Vehicle Systems",
+        hero_p1: "Endüstriyel araç sistemleri, mekanik tasarım ve üretilebilir ürün geliştirme odaklı çalışan bir tasarım uzmanıyım. Tasarımlarımı sadece CAD üzerinde değil, sahada gerçekten çalışan, üretilebilir ve servis edilebilir çözümler olarak ele alıyorum.",
+        hero_p2: "Yol süpürme araçları, fırça sistemleri, su püskürtme barları, manyetik toplama sistemleri ve özel iklim koşullarına uygun mekanik çözümler üzerinde çalışıyorum.",
+
+        stat_exp_label: "Deneyim",
+        stat_exp_value: "6+ Yıl",
+        stat_focus_label: "Odak Alanı",
+        stat_focus_value: "Mekanik Tasarım",
+        stat_tools_label: "Araçlar",
+        stat_tools_value: "SolidWorks + AutoCAD",
+        stat_approach_label: "Yaklaşım",
+        stat_approach_value: "Saha Odaklı",
+
+        hero_card_title: "Product Development Design Specialist",
+        hero_card_p: "Endüstriyel araçlarda mekanik sistem geliştirme, teknik resim, montaj yapıları, üretim uygunluğu ve saha verisine göre ürün iyileştirme.",
+
+        about_mini: "Hakkımda",
+        about_title: "Mühendislikte sahadaki gerçekliği merkeze alıyorum",
+        about_p: "Amacım sadece iyi görünen tasarımlar üretmek değil; üretimde uygulanabilir, montajda sorun çıkarmayan, kullanım sırasında verim sağlayan ve bakım tarafında mantıklı çözümler geliştirmek.",
+        about_panel1_title: "Profesyonel Bakış",
+        about_panel1_p: "Ürün geliştirme sürecinde CAD doğruluğunu, üretim gerçekleriyle birlikte ele alıyorum. Mekanik sistemlerin hem çizimde hem sahada doğru çalışması benim için temel öncelik.",
+        about_panel2_title: "Yetkinlikler",
+
+        tools_mini: "Kullandığım Araçlar",
+        tools_title: "Tasarımdan dokümantasyona kullandığım başlıca araçlar",
+        tools_p: "Ürün geliştirme sürecinde tasarım, teknik çizim, veri yönetimi ve kurumsal süreç takibi için aktif olarak kullandığım araçlar aşağıda yer almaktadır.",
+        tool_sw: "3D modelleme, montaj tasarımı, teknik resim ve mekanik sistem geliştirme süreçlerinde aktif olarak kullanıyorum.",
+        tool_acad: "2D teknik çizimler, üretim detayları ve proje dokümantasyonu için kullandığım temel araçlardan biridir.",
+        tool_pdm: "Dosya yönetimi, revizyon kontrolü ve mühendislik verilerinin düzenli takibi için kullanıyorum.",
+        tool_canias: "Kurumsal süreçler, ürün verileri ve üretimle ilişkili operasyonel akışların takibinde yararlandığım sistemdir.",
+        tool_md: "Mekanik sistem kurgusu, işlevsel çözüm üretimi, montaj uyumu ve saha gerçeklerine uygun tasarım yaklaşımıyla çalışıyorum.",
+        tool_pd: "İhtiyaç analizi, tasarım iyileştirme, üretilebilirlik ve ürünün sahadaki performansını birlikte düşünerek geliştirme yapıyorum.",
+
+        projects_mini: "Seçili Projeler",
+        projects_title: "Üzerinde çalıştığım projeler",
+        projects_p: "Aşağıda yer alan projeler, mekanik tasarım ve ürün geliştirme alanında edindiğim tecrübeyi yansıtmaktadır. Her projede ihtiyacı doğru analiz edip uygulanabilir, üretilebilir ve saha koşullarına uygun çözümler geliştirmeyi hedefledim.",
+
+        badge_industrial: "Industrial Vehicle",
+        badge_sweeping: "Sweeping System",
+        badge_cold: "Cold Climate",
+        badge_field: "Field Solution",
+
+        need_label: "İhtiyaç:",
+        solution_label: "Çözüm:",
+        result_label: "Sonuç:",
+
+        proj1_sub: "Ayarlanabilir ön su püskürtme barı sistemi",
+        proj1_need: "Süpürme sırasında toz kontrolünü daha verimli hale getirmek ve su dağılımını daha kontrollü sağlamak.",
+        proj1_solution: "Ön tarafa entegre edilen hareketli ve ayarlanabilir su püskürtme barı tasarımı geliştirildi.",
+        proj1_result: "Çalışma yüzeyinde daha dengeli su dağılımı ve daha iyi toz bastırma performansı hedeflendi.",
+
+        proj2_sub: "Daha geniş temizleme alanı ve yüksek verim",
+        proj2_need: "Temizleme genişliğini artırmak ve yüzey süpürme verimini iyileştirmek.",
+        proj2_solution: "Çoklu fırça yapısına sahip, çalışma alanını genişleten ve mekanik uyumu gözeten sistem tasarımı geliştirildi.",
+        proj2_result: "Süpürme kapsamını artıran ve operasyonel verimliliği destekleyen yapı ortaya çıkarıldı.",
+
+        proj3_sub: "Soğuk hava ve zorlu iklimler için özel çözüm",
+        proj3_need: "Düşük sıcaklıklarda çalışan araçlarda performans sürekliliğini desteklemek.",
+        proj3_solution: "Özellikle zorlu iklim koşullarına uygun alt sistem yaklaşımıyla ısı destekli yapı tasarlandı.",
+        proj3_result: "Kış şartlarında operasyon güvenilirliğini destekleyen daha dayanıklı bir çözüm ortaya kondu.",
+
+        proj4_sub: "Metal parçacık toplama için manyetik çözüm",
+        proj4_need: "Yüzeyde bulunan metal parçaların güvenli şekilde toplanabilmesi.",
+        proj4_solution: "Araç ön yapısına entegre edilen manyetik toplama sistemi tasarlandı.",
+        proj4_result: "Ferromanyetik atıkların toplanmasını destekleyen daha güvenli ve işlevsel bir sistem elde edildi.",
+
+        cert_mini: "Sertifikalar",
+        cert_title: "Eğitim ve gelişim alanlarım",
+        cert_p: "Bu bölümde yer alan sertifikalar, teknik bilgi birikimimi ve mesleki gelişime verdiğim önemi yansıtmaktadır.",
+        filter_all: "Tümü",
+        filter_solidworks: "SolidWorks",
+        filter_management: "Yönetim",
+        filter_quality: "Kalite",
+        filter_other: "Diğer",
+        cert_ford: "Kurumsal veya teknik gelişim sertifikası.",
+        cert_pm: "Proje yönetimi odaklı eğitim sertifikası.",
+        cert_qc: "Kalite kontrol ve süreç yaklaşımı odaklı sertifika.",
+        cert_swa: "İleri seviye SolidWorks yetkinliği.",
+        cert_swb: "Temel SolidWorks eğitimi.",
+        cert_swr: "Routing ve sistem yönlendirme eğitimi.",
+        cert_uagem: "Eğitim veya uzmanlık geliştirme sertifikası.",
+        cert_extra: "Ek sertifika görseli.",
+
+        contact_title: "İletişim",
+        contact_p: "Mekanik tasarım, ürün geliştirme, endüstriyel araç sistemleri ve mühendislik odaklı profesyonel bağlantılar için benimle iletişime geçebilirsiniz.",
+        email_label: "E-posta:",
+        phone_label: "Telefon:",
+        linkedin_view: "Profilimi Görüntüle",
+
+        footer_text: "Mechanical Design Portfolio",
+        float_phone: "Telefon",
+        float_mail: "Mail"
+      },
+
+      en: {
+        nav_about: "About",
+        nav_tools: "Tools",
+        nav_projects: "Projects",
+        nav_certificates: "Certificates",
+        nav_contact: "Contact",
+
+        hero_eyebrow: "Mechanical Design • Product Development • Industrial Vehicle Systems",
+        hero_p1: "I am a design specialist focused on industrial vehicle systems, mechanical design, and manufacturable product development. I approach my designs not only as CAD models, but as real-world solutions that are functional, manufacturable, and serviceable.",
+        hero_p2: "I work on road sweeping vehicles, brush systems, water spray bars, magnetic collection systems, and mechanical solutions tailored for challenging climate conditions.",
+
+        stat_exp_label: "Experience",
+        stat_exp_value: "6+ Years",
+        stat_focus_label: "Focus Area",
+        stat_focus_value: "Mechanical Design",
+        stat_tools_label: "Tools",
+        stat_tools_value: "SolidWorks + AutoCAD",
+        stat_approach_label: "Approach",
+        stat_approach_value: "Field-Oriented",
+
+        hero_card_title: "Product Development Design Specialist",
+        hero_card_p: "Mechanical system development, technical drawings, assembly structures, manufacturability, and product improvement based on field feedback in industrial vehicles.",
+
+        about_mini: "About",
+        about_title: "I put real-world engineering conditions at the center",
+        about_p: "My aim is not only to create designs that look good, but to develop solutions that are manufacturable, practical in assembly, efficient in operation, and reasonable in maintenance.",
+        about_panel1_title: "Professional Perspective",
+        about_panel1_p: "In the product development process, I evaluate CAD accuracy together with manufacturing realities. Making sure mechanical systems work properly both in design and in the field is my main priority.",
+        about_panel2_title: "Core Competencies",
+
+        tools_mini: "Tools I Use",
+        tools_title: "The main tools I use from design to documentation",
+        tools_p: "Below are the main tools I actively use for design, technical drafting, data management, and corporate process tracking throughout the product development process.",
+        tool_sw: "I actively use it for 3D modeling, assembly design, technical drawings, and mechanical system development.",
+        tool_acad: "It is one of my primary tools for 2D technical drawings, production details, and project documentation.",
+        tool_pdm: "I use it for file management, revision control, and organized tracking of engineering data.",
+        tool_canias: "It is the system I use to follow corporate processes, product data, and production-related operational workflows.",
+        tool_md: "I work with a design approach focused on mechanical system architecture, functional solutions, assembly compatibility, and field realities.",
+        tool_pd: "I approach product development by considering needs analysis, design improvement, manufacturability, and field performance together.",
+
+        projects_mini: "Selected Projects",
+        projects_title: "Projects I have worked on",
+        projects_p: "The projects below reflect my experience in mechanical design and product development. In each project, I aimed to analyze the need accurately and develop applicable, manufacturable, and field-suitable solutions.",
+
+        badge_industrial: "Industrial Vehicle",
+        badge_sweeping: "Sweeping System",
+        badge_cold: "Cold Climate",
+        badge_field: "Field Solution",
+
+        need_label: "Need:",
+        solution_label: "Solution:",
+        result_label: "Result:",
+
+        proj1_sub: "Adjustable front water spray bar system",
+        proj1_need: "To improve dust control during sweeping operations and provide more controlled water distribution.",
+        proj1_solution: "A movable and adjustable front-integrated water spray bar system was developed.",
+        proj1_result: "A more balanced water distribution across the working surface and improved dust suppression performance were targeted.",
+
+        proj2_sub: "Wider cleaning coverage and higher efficiency",
+        proj2_need: "To increase cleaning width and improve surface sweeping efficiency.",
+        proj2_solution: "A multi-brush system was developed to widen the working area while maintaining mechanical compatibility.",
+        proj2_result: "A structure that supports greater sweeping coverage and operational efficiency was achieved.",
+
+        proj3_sub: "Special solution for cold and harsh climates",
+        proj3_need: "To support performance continuity in vehicles operating at low temperatures.",
+        proj3_solution: "A heat-supported substructure was designed with a system approach suitable for harsh climate conditions.",
+        proj3_result: "A more durable solution supporting operational reliability in winter conditions was presented.",
+
+        proj4_sub: "Magnetic solution for collecting metal particles",
+        proj4_need: "To enable safe collection of metal parts found on the road surface.",
+        proj4_solution: "A magnetic collection system integrated into the front structure of the vehicle was designed.",
+        proj4_result: "A safer and more functional system supporting the collection of ferromagnetic waste was achieved.",
+
+        cert_mini: "Certificates",
+        cert_title: "My education and development areas",
+        cert_p: "The certificates in this section reflect my technical knowledge and the importance I place on professional development.",
+        filter_all: "All",
+        filter_solidworks: "SolidWorks",
+        filter_management: "Management",
+        filter_quality: "Quality",
+        filter_other: "Other",
+        cert_ford: "Corporate or technical development certificate.",
+        cert_pm: "Project management focused training certificate.",
+        cert_qc: "Certificate focused on quality control and process approach.",
+        cert_swa: "Advanced SolidWorks competency.",
+        cert_swb: "Basic SolidWorks training.",
+        cert_swr: "Routing and system layout training.",
+        cert_uagem: "Training or professional development certificate.",
+        cert_extra: "Additional certificate visual.",
+
+        contact_title: "Contact",
+        contact_p: "You can contact me for mechanical design, product development, industrial vehicle systems, and engineering-focused professional connections.",
+        email_label: "Email:",
+        phone_label: "Phone:",
+        linkedin_view: "View My Profile",
+
+        footer_text: "Mechanical Design Portfolio",
+        float_phone: "Phone",
+        float_mail: "Email"
+      }
+    };
+
+    function setLanguage(lang) {
+      document.documentElement.lang = lang;
+      localStorage.setItem("siteLang", lang);
+
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (translations[lang] && translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+
+      document.querySelectorAll(".lang-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.lang === lang);
+      });
+    }
+
+    document.querySelectorAll(".lang-btn").forEach(btn => {
+      btn.addEventListener("click", () => setLanguage(btn.dataset.lang));
+    });
+
+    const savedLang = localStorage.getItem("siteLang") || "tr";
+    setLanguage(savedLang);
+
     function openLightbox(src){
       const lightbox = document.getElementById('lightbox');
       const image = document.getElementById('lightboxImage');
