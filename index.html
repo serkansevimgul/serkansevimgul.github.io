@@ -17,7 +17,6 @@
       --yellow:#facc15;
       --yellow-soft:rgba(250,204,21,.12);
       --red:#ef4444;
-      --red-soft:rgba(239,68,68,.12);
       --shadow:0 20px 40px rgba(0,0,0,.28);
       --radius:24px;
     }
@@ -89,7 +88,6 @@
       color:var(--muted);
       font-size:14px;
       transition:.25s ease;
-      position:relative;
     }
 
     .nav-links a:hover{color:#fff}
@@ -173,6 +171,7 @@
       display:inline-flex;
       align-items:center;
       justify-content:center;
+      gap:8px;
       padding:14px 20px;
       border-radius:16px;
       font-weight:700;
@@ -351,6 +350,56 @@
     .tag:hover{
       border-color:rgba(250,204,21,.22);
       color:#fff;
+    }
+
+    .tools-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:18px;
+    }
+
+    .tool-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025));
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:22px;
+      box-shadow:var(--shadow);
+      transition:.28s ease;
+    }
+
+    .tool-card:hover{
+      transform:translateY(-5px);
+      border-color:rgba(250,204,21,.22);
+    }
+
+    .tool-icon{
+      width:54px;
+      height:54px;
+      border-radius:16px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(250,204,21,.10);
+      border:1px solid rgba(250,204,21,.16);
+      margin-bottom:16px;
+    }
+
+    .tool-icon svg{
+      width:28px;
+      height:28px;
+      fill:var(--yellow);
+    }
+
+    .tool-card h3{
+      margin:0 0 8px;
+      font-size:22px;
+    }
+
+    .tool-card p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.7;
+      font-size:15px;
     }
 
     .projects-grid{
@@ -556,6 +605,64 @@
       font-weight:700;
     }
 
+    .floating-contact{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      z-index:1200;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+
+    .floating-btn{
+      width:56px;
+      height:56px;
+      border-radius:18px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(20,20,25,.92);
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:0 16px 34px rgba(0,0,0,.32);
+      transition:.28s ease;
+      backdrop-filter:blur(8px);
+      position:relative;
+    }
+
+    .floating-btn:hover{
+      transform:translateY(-4px) scale(1.03);
+      border-color:rgba(250,204,21,.24);
+      background:rgba(30,30,36,.98);
+    }
+
+    .floating-btn svg{
+      width:24px;
+      height:24px;
+      fill:var(--yellow);
+    }
+
+    .floating-btn span{
+      position:absolute;
+      right:68px;
+      white-space:nowrap;
+      background:#16181d;
+      color:#fff;
+      border:1px solid var(--line);
+      padding:8px 12px;
+      border-radius:12px;
+      font-size:13px;
+      opacity:0;
+      transform:translateX(8px);
+      pointer-events:none;
+      transition:.25s ease;
+    }
+
+    .floating-btn:hover span{
+      opacity:1;
+      transform:translateX(0);
+    }
+
     footer{
       padding:26px 0 40px;
       color:#8d8d97;
@@ -619,6 +726,7 @@
     @media (max-width:1100px){
       .stats{grid-template-columns:repeat(2,1fr)}
       .cert-grid{grid-template-columns:repeat(3,1fr)}
+      .tools-grid{grid-template-columns:repeat(2, minmax(0,1fr))}
     }
 
     @media (max-width:900px){
@@ -645,15 +753,30 @@
       }
 
       .stats,
-      .cert-grid{
+      .cert-grid,
+      .tools-grid{
         grid-template-columns:1fr;
       }
 
       .hero{padding-top:48px}
-
       .section-title h2{font-size:28px}
       .project-card h3{font-size:22px}
       .contact-box h3{font-size:24px}
+
+      .floating-contact{
+        right:12px;
+        bottom:12px;
+      }
+
+      .floating-btn{
+        width:52px;
+        height:52px;
+        border-radius:16px;
+      }
+
+      .floating-btn span{
+        display:none;
+      }
     }
   </style>
 </head>
@@ -664,6 +787,7 @@
       <div class="brand">Serkan <span>Sevimgül</span></div>
       <div class="nav-links">
         <a href="#about">Hakkımda</a>
+        <a href="#tools">Araçlar</a>
         <a href="#projects">Projeler</a>
         <a href="#certificates">Sertifikalar</a>
         <a href="#contact">İletişim</a>
@@ -766,6 +890,68 @@
             <span class="tag">Sheet Metal</span>
             <span class="tag">System Integration</span>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tools">
+    <div class="container">
+      <div class="section-title reveal">
+        <div class="mini">Kullandığım Araçlar</div>
+        <h2>Tasarımdan dokümantasyona kullandığım başlıca araçlar</h2>
+        <p>
+          Ürün geliştirme sürecinde tasarım, teknik çizim, veri yönetimi ve kurumsal süreç takibi için aktif olarak kullandığım araçlar aşağıda yer almaktadır.
+        </p>
+      </div>
+
+      <div class="tools-grid">
+        <div class="tool-card reveal">
+          <div class="tool-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h7v7H4V4zm9 0h7v7h-7V4zM4 13h7v7H4v-7zm9 2h7v3h-7v-3z"/></svg>
+          </div>
+          <h3>SolidWorks</h3>
+          <p>3D modelleme, montaj tasarımı, teknik resim ve mekanik sistem geliştirme süreçlerinde aktif olarak kullanıyorum.</p>
+        </div>
+
+        <div class="tool-card reveal">
+          <div class="tool-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 17l6-10 4 6 3-4 5 8H3z"/></svg>
+          </div>
+          <h3>AutoCAD</h3>
+          <p>2D teknik çizimler, üretim detayları ve proje dokümantasyonu için kullandığım temel araçlardan biridir.</p>
+        </div>
+
+        <div class="tool-card reveal">
+          <div class="tool-icon">
+            <svg viewBox="0 0 24 24"><path d="M5 4h10l4 4v12H5V4zm9 1.5V9h3.5L14 5.5zM8 13h8v2H8v-2zm0 4h8v2H8v-2z"/></svg>
+          </div>
+          <h3>PDM</h3>
+          <p>Dosya yönetimi, revizyon kontrolü ve mühendislik verilerinin düzenli takibi için kullanıyorum.</p>
+        </div>
+
+        <div class="tool-card reveal">
+          <div class="tool-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 5h16v4H4V5zm0 5h16v4H4v-4zm0 5h16v4H4v-4z"/></svg>
+          </div>
+          <h3>CANIAS ERP</h3>
+          <p>Kurumsal süreçler, ürün verileri ve üretimle ilişkili operasyonel akışların takibinde yararlandığım sistemdir.</p>
+        </div>
+
+        <div class="tool-card reveal">
+          <div class="tool-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3 6 6 3-6 3-3 6-3-6-6-3 6-3 3-6z"/></svg>
+          </div>
+          <h3>Mechanical Design</h3>
+          <p>Mekanik sistem kurgusu, işlevsel çözüm üretimi, montaj uyumu ve saha gerçeklerine uygun tasarım yaklaşımıyla çalışıyorum.</p>
+        </div>
+
+        <div class="tool-card reveal">
+          <div class="tool-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 3l9 5v8l-9 5-9-5V8l9-5zm0 2.2L5 9v6l7 3.8 7-3.8V9l-7-3.8z"/></svg>
+          </div>
+          <h3>Product Development</h3>
+          <p>İhtiyaç analizi, tasarım iyileştirme, üretilebilirlik ve ürünün sahadaki performansını birlikte düşünerek geliştirme yapıyorum.</p>
         </div>
       </div>
     </div>
@@ -1040,6 +1226,23 @@
       © 2026 Serkan Sevimgül • Mechanical Design Portfolio
     </div>
   </footer>
+
+  <div class="floating-contact">
+    <a class="floating-btn" href="tel:+905456261194" aria-label="Telefon">
+      <span>Telefon</span>
+      <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.7 5.1 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.3 1 .3 2 .5 3.1.5.7 0 1.3.6 1.3 1.3V20c0 .7-.6 1.3-1.3 1.3C10.5 21.3 2.7 13.5 2.7 4.3 2.7 3.6 3.3 3 4 3h3.3c.7 0 1.3.6 1.3 1.3 0 1.1.2 2.1.5 3.1.1.4 0 .9-.3 1.2l-2.2 2.2z"/></svg>
+    </a>
+
+    <a class="floating-btn" href="mailto:serkansevimgul@gmail.com" aria-label="Mail">
+      <span>Mail</span>
+      <svg viewBox="0 0 24 24"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm0 2v.5l9 6 9-6V7H3zm18 10V9.7l-8.4 5.6a1 1 0 0 1-1.2 0L3 9.7V17h18z"/></svg>
+    </a>
+
+    <a class="floating-btn" href="https://tr.linkedin.com/in/serkan-sevimg%C3%BCl-9616261a1" target="_blank" aria-label="LinkedIn">
+      <span>LinkedIn</span>
+      <svg viewBox="0 0 24 24"><path d="M6.94 8.5A1.56 1.56 0 1 1 6.93 5.4a1.56 1.56 0 0 1 .01 3.1zM5.5 9.75h2.88V19H5.5V9.75zm4.68 0h2.76v1.26h.04c.38-.73 1.32-1.5 2.72-1.5 2.9 0 3.44 1.9 3.44 4.38V19h-2.88v-4.47c0-1.07-.02-2.44-1.49-2.44-1.49 0-1.71 1.16-1.71 2.36V19h-2.88V9.75z"/></svg>
+    </a>
+  </div>
 
   <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
     <div class="lightbox-content">
