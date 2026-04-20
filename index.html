@@ -1,694 +1,171 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Serkan Sevimgül | Engineering Portfolio</title>
+  <meta charset="UTF-8">
+  <title>Serkan Sevimgül</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
-    body{
-      margin:0;
-      font-family:Arial, Helvetica, sans-serif;
-      color:#f3f4f6;
-      line-height:1.6;
-      background:
-        radial-gradient(circle at top left, rgba(59,130,246,0.14), transparent 28%),
-        radial-gradient(circle at bottom right, rgba(168,85,247,0.10), transparent 24%),
-        #0b0f14;
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0a0a0a;
+      color: #fff;
     }
 
-    .container{
-      width:min(1120px, 92%);
-      margin:0 auto;
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
     }
 
-    header{
-      padding:72px 0 56px;
-      background:
-        radial-gradient(circle at top left, rgba(59,130,246,0.16), transparent 30%),
-        linear-gradient(180deg,#101722 0%, rgba(11,15,20,0.94) 100%);
-      border-bottom:1px solid rgba(255,255,255,0.08);
-      backdrop-filter: blur(6px);
+    h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
     }
 
-    .hero{
-      display:grid;
-      grid-template-columns: 1.25fr 0.75fr;
-      gap:34px;
-      align-items:center;
+    h2 {
+      color: #facc15;
+      margin-top: 60px;
     }
 
-    .hero h1{
-      margin:0 0 10px;
-      font-size:54px;
-      letter-spacing:0.3px;
-      line-height:1.1;
+    p {
+      color: #aaa;
+      line-height: 1.6;
     }
 
-    .hero h2{
-      margin:0;
-      font-size:24px;
-      color:#d7dce3;
-      font-weight:700;
+    .btn {
+      display: inline-block;
+      padding: 12px 20px;
+      margin-right: 10px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
     }
 
-    .hero p{
-      margin:16px 0 0;
-      max-width:900px;
-      color:#b7c0cb;
-      font-size:17px;
+    .btn-yellow {
+      background: #facc15;
+      color: #000;
     }
 
-    .hero-actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      margin-top:28px;
+    .btn-outline {
+      border: 1px solid #444;
+      color: #fff;
     }
 
-    .hero-photo-wrap{
-      display:flex;
-      justify-content:center;
-      align-items:center;
+    .grid {
+      display: grid;
+      gap: 20px;
     }
 
-    .hero-photo{
-      width:330px;
-      height:330px;
-      border-radius:26px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,0.12);
-      box-shadow:0 22px 45px rgba(0,0,0,0.34);
-      background:#111827;
-      position:relative;
+    .grid-2 {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
 
-    .hero-photo::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      border:1px solid rgba(255,255,255,0.06);
-      border-radius:26px;
-      pointer-events:none;
+    .card {
+      background: #111;
+      border: 1px solid #222;
+      padding: 20px;
+      border-radius: 15px;
+      transition: 0.3s;
     }
 
-    .hero-photo img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: #facc15;
     }
 
-    .btn{
-      display:inline-block;
-      padding:12px 18px;
-      border-radius:12px;
-      text-decoration:none;
-      font-weight:700;
-      transition:0.22s ease;
-      border:1px solid rgba(255,255,255,0.10);
+    .tag {
+      display: inline-block;
+      padding: 5px 10px;
+      border: 1px solid #333;
+      border-radius: 20px;
+      font-size: 12px;
+      margin: 5px 5px 0 0;
+      color: #ccc;
     }
 
-    .btn-primary{
-      background:#f5f7fa;
-      color:#111827;
-    }
-
-    .btn-primary:hover{
-      transform:translateY(-2px);
-      opacity:0.96;
-      box-shadow:0 8px 20px rgba(255,255,255,0.08);
-    }
-
-    .btn-secondary{
-      background:#161d29;
-      color:#dbe4ee;
-    }
-
-    .btn-secondary:hover{
-      background:#1b2432;
-      transform:translateY(-2px);
-    }
-
-    .section{
-      padding:48px 0;
-    }
-
-    .section-title{
-      font-size:34px;
-      margin:0 0 18px;
-      line-height:1.2;
-    }
-
-    .card{
-      background:rgba(19,26,36,0.88);
-      border:1px solid rgba(255,255,255,0.08);
-      border-radius:18px;
-      padding:24px;
-      margin-bottom:18px;
-      box-shadow:0 10px 28px rgba(0,0,0,0.22);
-      backdrop-filter: blur(10px);
-    }
-
-    .muted{
-      color:#aab4c0;
-    }
-
-    .skills{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-    }
-
-    .tag{
-      display:inline-block;
-      padding:9px 13px;
-      background:#202a38;
-      border:1px solid rgba(255,255,255,0.08);
-      border-radius:999px;
-      font-size:13px;
-      color:#e3ecf6;
-      transition:0.2s ease;
-    }
-
-    .tag:hover{
-      transform:translateY(-1px);
-      background:#253144;
-    }
-
-    .two-col{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:18px;
-    }
-
-    .projects-grid{
-      display:grid;
-      grid-template-columns:repeat(2, minmax(0, 1fr));
-      gap:18px;
-    }
-
-    .project-card{
-      background:rgba(19,26,36,0.9);
-      border:1px solid rgba(255,255,255,0.08);
-      border-radius:18px;
-      overflow:hidden;
-      box-shadow:0 10px 28px rgba(0,0,0,0.22);
-      transition:0.28s ease;
-      backdrop-filter: blur(10px);
-    }
-
-    .project-card:hover{
-      transform:translateY(-5px);
-      box-shadow:0 18px 38px rgba(0,0,0,0.30);
-      border-color:rgba(255,255,255,0.12);
-    }
-
-    .project-media{
-      height:240px;
-      background:#0f1621;
-      border-bottom:1px solid rgba(255,255,255,0.08);
-      overflow:hidden;
-      position:relative;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-    }
-
-    .project-media img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-      transition:transform 0.5s ease;
-    }
-
-    .project-card:hover .project-media img{
-      transform:scale(1.04);
-    }
-
-    .project-placeholder{
-      color:#9aa8b8;
-      padding:20px;
-      font-weight:700;
-    }
-
-    .project-content{
-      padding:22px;
-    }
-
-    .project-content h3{
-      margin:0 0 8px;
-      font-size:22px;
-      line-height:1.25;
-    }
-
-    .project-content p{
-      margin:10px 0;
-      color:#c6ced8;
-    }
-
-    .project-tags{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      margin-top:14px;
-    }
-
-    .small-tag{
-      font-size:12px;
-      padding:7px 10px;
-      border-radius:999px;
-      background:#1c2532;
-      color:#d7e1ec;
-      border:1px solid rgba(255,255,255,0.08);
-    }
-
-    .list-block{
-      display:flex;
-      flex-direction:column;
-      gap:16px;
-    }
-
-    .list-item{
-      padding:18px;
-      border-radius:14px;
-      background:#101722;
-      border:1px solid rgba(255,255,255,0.06);
-      transition:0.22s ease;
-    }
-
-    .list-item:hover{
-      transform:translateY(-2px);
-      background:#121b28;
-    }
-
-    .list-item h4{
-      margin:0 0 6px;
-      font-size:18px;
-    }
-
-    .list-item p{
-      margin:4px 0;
-      color:#c6ced8;
-    }
-
-    .cert-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
-      gap:18px;
-    }
-
-    .cert-card{
-      background:rgba(19,26,36,0.9);
-      border:1px solid rgba(255,255,255,0.08);
-      border-radius:18px;
-      overflow:hidden;
-      box-shadow:0 10px 28px rgba(0,0,0,0.22);
-      transition:0.25s ease;
-    }
-
-    .cert-card:hover{
-      transform:translateY(-4px);
-      box-shadow:0 16px 34px rgba(0,0,0,0.28);
-    }
-
-    .cert-card img{
-      width:100%;
-      height:220px;
-      object-fit:cover;
-      display:block;
-    }
-
-    .cert-card p{
-      margin:0;
-      padding:16px;
-      color:#d7e1ec;
-      font-size:14px;
-    }
-
-    .video-box{
-      background:rgba(19,26,36,0.88);
-      border:1px solid rgba(255,255,255,0.08);
-      border-radius:18px;
-      padding:24px;
-      backdrop-filter: blur(10px);
-    }
-
-    .video-placeholder{
-      margin-top:16px;
-      min-height:180px;
-      border-radius:14px;
-      border:1px dashed rgba(255,255,255,0.18);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding:20px;
-      color:#aab4c0;
-      background:#0f1621;
-    }
-
-    .contact a{
-      color:#8fcbff;
-      text-decoration:none;
-    }
-
-    .contact a:hover{
-      text-decoration:underline;
-    }
-
-    footer{
-      border-top:1px solid rgba(255,255,255,0.08);
-      padding:30px 0 42px;
-      color:#96a2b0;
-      text-align:center;
-      margin-top:20px;
-      background:linear-gradient(180deg, rgba(0,0,0,0), rgba(255,255,255,0.01));
-    }
-
-    @media (max-width: 900px){
-      .projects-grid,
-      .two-col,
-      .hero{
-        grid-template-columns:1fr;
-      }
-
-      .hero h1{
-        font-size:40px;
-      }
-
-      .hero h2{
-        font-size:20px;
-      }
-
-      .section-title{
-        font-size:28px;
-      }
-
-      .project-media{
-        height:220px;
-      }
-
-      .hero-photo{
-        width:260px;
-        height:260px;
-      }
-
-      .hero-photo-wrap{
-        order:-1;
-      }
+    .footer {
+      margin-top: 80px;
+      padding: 30px;
+      text-align: center;
+      border-top: 1px solid #222;
+      color: #777;
     }
   </style>
 </head>
+
 <body>
 
-  <header>
-    <div class="container hero">
+<div class="container">
+
+  <h1>Serkan Sevimgül</h1>
+  <p>Mechanical Design & Product Development Specialist</p>
+
+  <a href="#projects" class="btn btn-yellow">Projeleri Gör</a>
+  <a href="mailto:serkansevimgul@gmail.com" class="btn btn-outline">İletişim</a>
+
+  <h2>Hakkımda</h2>
+  <p>
+    Endüstriyel araçlar ve yol süpürme sistemleri üzerine 6+ yıllık deneyime sahibim.
+    Tasarımlarımı sadece CAD üzerinde değil, üretilebilir ve sahada çalışabilir olacak şekilde geliştiriyorum.
+  </p>
+
+  <h2>Yetenekler</h2>
+  <div>
+    <span class="tag">SolidWorks</span>
+    <span class="tag">AutoCAD</span>
+    <span class="tag">PDM</span>
+    <span class="tag">CANIAS ERP</span>
+    <span class="tag">Mechanical Design</span>
+    <span class="tag">Product Development</span>
+  </div>
+
+  <h2 id="projects">Projeler</h2>
+
+  <div class="grid grid-2">
+
+    <div class="card">
+      <h3>Water Spray System</h3>
+      <p>Toz kontrolü için ayarlanabilir su püskürtme sistemi geliştirdim.</p>
       <div>
-        <h1>Serkan SEVİMGÜL</h1>
-        <h2>Senior Product Development Design Specialist</h2>
-
-        <p>Mechanical Design | Industrial Vehicle Systems | Product Development</p>
-        <p>Mekanik Tasarım | Endüstriyel Araç Sistemleri | Ürün Geliştirme</p>
-
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="https://tr.linkedin.com/in/serkan-sevimg%C3%BCl-9616261a1" target="_blank">LinkedIn</a>
-          <a class="btn btn-secondary" href="mailto:serkansevimgul@gmail.com">Email</a>
-          <a class="btn btn-secondary" href="#projects">Projects / Projeler</a>
-        </div>
-      </div>
-
-      <div class="hero-photo-wrap">
-        <div class="hero-photo">
-          <img src="profile.jpg" alt="Serkan Sevimgül">
-        </div>
+        <span class="tag">SolidWorks</span>
+        <span class="tag">System Design</span>
       </div>
     </div>
-  </header>
 
-  <main class="container">
-
-    <section class="section">
-      <h2 class="section-title">About / Hakkımda</h2>
-      <div class="card">
-        <p>
-          Mechanical design and product development specialist with more than 6 years of experience in industrial vehicle systems and municipal equipment.
-          Currently working in the product development department at Çeksan Road Sweeping Vehicles, focusing on the design and development of mechanical systems
-          for vacuum road sweepers and industrial cleaning vehicles. My work includes CAD modeling, sheet metal design, product structures, and preparation of
-          engineering documentation using SolidWorks, AutoCAD, PDM and CANIAS ERP systems.
-        </p>
-
-        <p>
-          Endüstriyel araç sistemleri ve belediye ekipmanları alanında 6 yılı aşkın deneyime sahip mekanik tasarım ve ürün geliştirme uzmanıyım.
-          Şu anda Çeksan Yol Süpürme Araçları firmasında ürün geliştirme bölümünde çalışarak vakumlu yol süpürme araçları ve endüstriyel temizlik araçları için
-          mekanik sistemlerin tasarım ve geliştirme süreçlerinde görev almaktayım. SolidWorks, AutoCAD, PDM ve CANIAS ERP sistemlerini kullanarak CAD modelleme,
-          sac metal tasarımı, ürün ağaçları ve üretim dokümantasyonu üzerinde çalışıyorum.
-        </p>
-
-        <p>
-          Throughout my career I have been involved in the development of multiple vehicle subsystems such as sweeping mechanisms, water spray systems,
-          magnetic debris collection systems, and cold-climate adaptations for airport sweeping operations. My focus is on practical engineering solutions,
-          manufacturable designs, and improving the operational efficiency of industrial vehicles.
-        </p>
-
-        <p>
-          Kariyerim boyunca süpürme mekanizmaları, su püskürtme sistemleri, metal atık toplama mıknatıs sistemleri ve soğuk iklim koşullarına uygun havaalanı
-          süpürme sistemleri gibi birçok araç alt sisteminin geliştirilmesinde yer aldım. Odak noktam üretilebilir tasarımlar geliştirmek, mühendislik çözümlerini
-          pratik hale getirmek ve endüstriyel araçların operasyonel verimliliğini artırmaktır.
-        </p>
+    <div class="card">
+      <h3>Triple Brush System</h3>
+      <p>Daha geniş temizlik alanı ve yüksek verimlilik sağlayan sistem.</p>
+      <div>
+        <span class="tag">Assembly</span>
+        <span class="tag">Mechanism</span>
       </div>
-    </section>
+    </div>
 
-    <section class="section">
-      <div class="two-col">
-        <div>
-          <h2 class="section-title">Experience / Deneyim</h2>
-          <div class="card list-block">
-            <div class="list-item">
-              <h4>Çeksan Road Sweeping Vehicles</h4>
-              <p><strong>Senior Product Development Design Specialist</strong></p>
-              <p class="muted">2019 - Present</p>
-              <p>
-                Mechanical design, sheet metal development, product improvement, cost reduction studies, vehicle layouts, and manufacturing-oriented engineering documentation.
-              </p>
-              <p>
-                Mekanik tasarım, sac metal geliştirme, ürün iyileştirme, maliyet düşürme çalışmaları, araç yerleşimleri ve üretime yönelik mühendislik dokümantasyonu.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <h2 class="section-title">Education / Eğitim</h2>
-          <div class="card list-block">
-            <div class="list-item">
-              <h4>Ege University</h4>
-              <p><strong>Associate Degree - Mechanical Technology</strong></p>
-              <p class="muted">2017 - 2019</p>
-              <p>
-                Technical education focused on mechanical systems, manufacturing, machine design and engineering fundamentals.
-              </p>
-              <p>
-                Mekanik sistemler, üretim, makine tasarımı ve mühendislik temellerine odaklanan teknik eğitim.
-              </p>
-            </div>
-
-            <div class="list-item">
-              <h4>Bergama Vocational and Technical Anatolian High School</h4>
-              <p><strong>Machine Technology</strong></p>
-              <p class="muted">Graduated in 2016</p>
-              <p>
-                Vocational education in machine manufacturing, technical drawing and workshop-based production practices.
-              </p>
-              <p>
-                Makine imalatı, teknik resim ve atölye tabanlı üretim uygulamalarını kapsayan mesleki eğitim.
-              </p>
-            </div>
-          </div>
-        </div>
+    <div class="card">
+      <h3>Heated Undercarriage</h3>
+      <p>Soğuk hava koşullarında çalışan özel tasarım.</p>
+      <div>
+        <span class="tag">Cold Design</span>
       </div>
-    </section>
+    </div>
 
-    <section class="section">
-      <h2 class="section-title">Skills / Yetkinlikler</h2>
-      <div class="card">
-        <div class="skills">
-          <span class="tag">SolidWorks</span>
-          <span class="tag">AutoCAD</span>
-          <span class="tag">PDM</span>
-          <span class="tag">CANIAS ERP</span>
-          <span class="tag">Mechanical Design</span>
-          <span class="tag">Product Development</span>
-          <span class="tag">Sheet Metal Design</span>
-          <span class="tag">Technical Drawing</span>
-          <span class="tag">Assembly Design</span>
-          <span class="tag">Engineering Documentation</span>
-        </div>
+    <div class="card">
+      <h3>Magnetic Collection</h3>
+      <p>Metal parçaları toplamak için manyetik sistem.</p>
+      <div>
+        <span class="tag">Innovation</span>
       </div>
-    </section>
+    </div>
 
-    <section class="section" id="projects">
-      <h2 class="section-title">Engineering Projects / Mühendislik Projeleri</h2>
+  </div>
 
-      <div class="projects-grid">
+  <div class="footer">
+    © 2026 Serkan Sevimgül
+  </div>
 
-        <div class="project-card">
-          <div class="project-media">
-            <img src="water-spray-bar.png" alt="Movable Front Water Spray Bar System">
-          </div>
-          <div class="project-content">
-            <h3>Movable Front Water Spray Bar System</h3>
-            <p>Adjustable front spray bar designed for vacuum road sweepers to improve dust suppression and water distribution during sweeping operations.</p>
-            <p>Vakumlu yol süpürme araçlarında süpürme sırasında toz bastırmayı ve su dağılımını iyileştirmek için tasarlanmış hareketli ön sulama barı sistemi.</p>
-            <div class="project-tags">
-              <span class="small-tag">Mechanical Design</span>
-              <span class="small-tag">SolidWorks</span>
-              <span class="small-tag">Product Development</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-media">
-            <img src="triple-brush.png" alt="Triple Brush Sweeping System">
-          </div>
-          <div class="project-content">
-            <h3>Triple Brush Sweeping System</h3>
-            <p>Multi-brush sweeping mechanism developed to increase road cleaning efficiency and debris collection coverage in vacuum sweeping vehicles.</p>
-            <p>Vakumlu süpürme araçlarında yol temizleme verimini ve atık toplama kapsama alanını artırmak için geliştirilen çoklu fırça süpürme mekanizması.</p>
-            <div class="project-tags">
-              <span class="small-tag">Mechanical Design</span>
-              <span class="small-tag">Assembly Design</span>
-              <span class="small-tag">SolidWorks</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-media">
-            <img src="heated-undercarriage.png" alt="Heated Airport Sweeping Undercarriage">
-          </div>
-          <div class="project-content">
-            <h3>Heated Airport Sweeping Undercarriage</h3>
-            <p>Cold-climate undercarriage sweeping system with heating capability, developed for airport sweeping applications in regions such as Russia. Designed to improve operational reliability, prevent freezing, and support efficient large-surface cleaning in harsh winter conditions.</p>
-            <p>Rusya gibi soğuk bölgelerde havaalanı süpürme uygulamaları için geliştirilen, ısıtma özellikli alt takım süpürme sistemi. Donmayı önlemek, çalışma güvenilirliğini artırmak ve zorlu kış koşullarında geniş yüzey temizliğini verimli şekilde desteklemek amacıyla tasarlanmıştır.</p>
-            <div class="project-tags">
-              <span class="small-tag">Cold Climate Engineering</span>
-              <span class="small-tag">Mechanical Design</span>
-              <span class="small-tag">SolidWorks</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-media">
-            <img src="magnetic-photo.png" alt="Magnetic Metal Collection System">
-          </div>
-          <div class="project-content">
-            <h3>Magnetic Metal Collection System</h3>
-            <p>Front mounted magnetic system designed to collect ferrous metal debris such as nails and bolts during sweeping operations.</p>
-            <p>Süpürme sırasında çivi, cıvata gibi metal atıkları toplamak için tasarlanmış ön konumlu mıknatıs metal toplama sistemi.</p>
-            <div class="project-tags">
-              <span class="small-tag">Mechanical Design</span>
-              <span class="small-tag">System Integration</span>
-              <span class="small-tag">Product Development</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-media">
-            <div class="project-placeholder">
-              Dust Prevention System<br>LinkedIn Post / Video
-            </div>
-          </div>
-          <div class="project-content">
-            <h3>Dust Prevention System</h3>
-            <p>Engineering solution developed to reduce dust emission during dry vacuum sweeping while maintaining a clean road surface finish.</p>
-            <p>Kuru vakumlu süpürme sırasında toz emisyonunu azaltırken temiz bir yol yüzeyi elde etmeyi amaçlayan mühendislik çözümü.</p>
-            <div class="project-tags">
-              <span class="small-tag">Vacuum Sweeping</span>
-              <span class="small-tag">Dust Control</span>
-              <span class="small-tag">Engineering Design</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <section class="section">
-      <h2 class="section-title">Certificates / Sertifikalar</h2>
-      <div class="cert-grid">
-        <div class="cert-card">
-          <img src="certificate1.jpg" alt="Certificate 1">
-          <p>SolidWorks Basic Training</p>
-        </div>
-
-        <div class="cert-card">
-          <img src="certificate2.jpg" alt="Certificate 2">
-          <p>SolidWorks Advanced Training</p>
-        </div>
-
-        <div class="cert-card">
-          <img src="certificate3.jpg" alt="Certificate 3">
-          <p>SolidWorks Routing Training</p>
-        </div>
-
-        <div class="cert-card">
-          <img src="certificate4.jpg" alt="Certificate 4">
-          <p>Project Management Training</p>
-        </div>
-
-        <div class="cert-card">
-          <img src="certificate5.jpg" alt="Certificate 5">
-          <p>Quality / Technical Training</p>
-        </div>
-
-        <div class="cert-card">
-          <img src="certificate6.jpg" alt="Certificate 6">
-          <p>Fluid Power / UAGEM Training</p>
-        </div>
-
-        <div class="cert-card">
-          <img src="certificate7.jpg" alt="Certificate 7">
-          <p>Ford Trucks Bodybuilder Training Summit</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2 class="section-title">Video / Bağlantı</h2>
-      <div class="video-box">
-        <p>
-          <a href="https://www.linkedin.com/posts/serkan-sevimg%C3%BCl-9616261a1_sweepers-roadconstruction-roadsweeper-activity-6804489465659211776-PuFk?utm_medium=ios_app&rcm=ACoAAC9Bp9kBrxBJMbWIjyR_UYIVmRbP7dpeaQU&utm_source=social_share_send&utm_campaign=whatsapp" target="_blank" style="color:#8fcbff;text-decoration:none;">
-            View LinkedIn Post / LinkedIn Paylaşımını Aç
-          </a>
-        </p>
-        <div class="video-placeholder">
-          Buraya daha sonra video embed veya ekran görüntüsü ekleyebiliriz.<br>
-          Video can be embedded here later.
-        </div>
-      </div>
-    </section>
-
-    <section class="section contact">
-      <h2 class="section-title">Contact / İletişim</h2>
-      <div class="card">
-        <p><strong>Email:</strong> <a href="mailto:serkansevimgul@gmail.com">serkansevimgul@gmail.com</a></p>
-        <p><strong>LinkedIn:</strong> <a href="https://tr.linkedin.com/in/serkan-sevimg%C3%BCl-9616261a1" target="_blank">linkedin.com/in/serkan-sevimgül-9616261a1</a></p>
-      </div>
-    </section>
-
-  </main>
-
-  <footer>
-    © 2026 Serkan SEVİMGÜL — Engineering Portfolio
-  </footer>
+</div>
 
 </body>
 </html>
