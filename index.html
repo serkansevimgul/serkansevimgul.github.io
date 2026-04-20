@@ -15,7 +15,6 @@
       --muted:#b6b8c2;
       --line:rgba(255,255,255,.08);
       --yellow:#facc15;
-      --yellow-soft:rgba(250,204,21,.12);
       --red:#ef4444;
       --shadow:0 20px 40px rgba(0,0,0,.28);
       --radius:24px;
@@ -158,48 +157,6 @@
       line-height:1.75;
       margin:0 0 16px;
       max-width:740px;
-    }
-
-    .hero-buttons{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      margin-top:26px;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      padding:14px 20px;
-      border-radius:16px;
-      font-weight:700;
-      border:1px solid transparent;
-      cursor:pointer;
-      transition:.28s ease;
-    }
-
-    .btn-primary{
-      background:var(--yellow);
-      color:#171717;
-      box-shadow:0 12px 28px rgba(250,204,21,.18);
-    }
-
-    .btn-primary:hover{
-      transform:translateY(-2px);
-      box-shadow:0 16px 30px rgba(250,204,21,.22);
-    }
-
-    .btn-secondary{
-      background:rgba(255,255,255,.04);
-      border-color:var(--line);
-      color:#fff;
-    }
-
-    .btn-secondary:hover{
-      background:rgba(255,255,255,.08);
-      transform:translateY(-2px);
     }
 
     .hero-card{
@@ -570,10 +527,6 @@
     }
 
     .contact-box{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:24px;
       padding:28px;
       background:linear-gradient(135deg, rgba(250,204,21,.11), rgba(239,68,68,.10));
       border:1px solid rgba(255,255,255,.08);
@@ -736,11 +689,6 @@
         grid-template-columns:1fr;
       }
 
-      .contact-box{
-        flex-direction:column;
-        align-items:flex-start;
-      }
-
       .cert-grid{grid-template-columns:repeat(2,1fr)}
     }
 
@@ -810,14 +758,6 @@
             Yol süpürme araçları, fırça sistemleri, su püskürtme barları, manyetik toplama sistemleri
             ve özel iklim koşullarına uygun mekanik çözümler üzerinde çalışıyorum.
           </p>
-
-          <div class="hero-buttons">
-            <a class="btn btn-primary" href="#projects">Projeleri Gör</a>
-            <a class="btn btn-secondary" href="mailto:serkansevimgul@gmail.com">Mail Gönder</a>
-            <a class="btn btn-secondary" href="tel:+905456261194">Telefon</a>
-            <a class="btn btn-secondary" href="https://tr.linkedin.com/in/serkan-sevimg%C3%BCl-9616261a1" target="_blank">LinkedIn</a>
-            <a class="btn btn-secondary" href="cv.pdf" download>CV İndir</a>
-          </div>
 
           <div class="stats">
             <div class="stat">
@@ -1201,21 +1141,15 @@
   <section id="contact">
     <div class="container">
       <div class="contact-box reveal">
-        <div>
-          <h3>Birlikte daha güçlü projeler üretelim</h3>
-          <p>
-            Mekanik tasarım, ürün geliştirme, endüstriyel araç sistemleri ve mühendislik odaklı
-            profesyonel bağlantılar için benimle iletişime geçebilirsiniz.
-          </p>
-          <div class="contact-details">
-            <div><strong>E-posta:</strong> <a href="mailto:serkansevimgul@gmail.com">serkansevimgul@gmail.com</a></div>
-            <div><strong>Telefon:</strong> <a href="tel:+905456261194">0545 626 11 94</a></div>
-          </div>
-        </div>
-        <div class="hero-buttons">
-          <a class="btn btn-primary" href="mailto:serkansevimgul@gmail.com">Mail Gönder</a>
-          <a class="btn btn-secondary" href="tel:+905456261194">Telefon</a>
-          <a class="btn btn-secondary" href="https://tr.linkedin.com/in/serkan-sevimg%C3%BCl-9616261a1" target="_blank">LinkedIn</a>
+        <h3>İletişim</h3>
+        <p>
+          Mekanik tasarım, ürün geliştirme, endüstriyel araç sistemleri ve mühendislik odaklı
+          profesyonel bağlantılar için benimle iletişime geçebilirsiniz.
+        </p>
+        <div class="contact-details">
+          <div><strong>E-posta:</strong> <a href="mailto:serkansevimgul@gmail.com">serkansevimgul@gmail.com</a></div>
+          <div><strong>Telefon:</strong> <a href="tel:+905456261194">0545 626 11 94</a></div>
+          <div><strong>LinkedIn:</strong> <a href="https://tr.linkedin.com/in/serkan-sevimg%C3%BCl-9616261a1" target="_blank">Profilimi Görüntüle</a></div>
         </div>
       </div>
     </div>
