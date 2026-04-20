@@ -135,6 +135,7 @@
       font-weight:700;
       transition:.25s ease;
       border:1px solid transparent;
+      cursor:pointer;
     }
 
     .btn-primary{
@@ -303,11 +304,20 @@
       border-color:rgba(250,204,21,.26);
     }
 
+    .project-image-wrap{
+      overflow:hidden;
+      background:#111;
+    }
+
     .project-image{
       width:100%;
       aspect-ratio:16/10;
       object-fit:cover;
-      background:#111;
+      transition:transform .45s ease;
+    }
+
+    .project-card:hover .project-image{
+      transform:scale(1.06);
     }
 
     .project-content{
@@ -366,6 +376,7 @@
       overflow:hidden;
       transition:.25s ease;
       box-shadow:var(--shadow);
+      cursor:pointer;
     }
 
     .cert-card:hover{
@@ -429,6 +440,54 @@
       margin-top:26px;
     }
 
+    .lightbox{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.88);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      z-index:9999;
+    }
+
+    .lightbox.active{
+      display:flex;
+    }
+
+    .lightbox-content{
+      position:relative;
+      max-width:min(1000px, 100%);
+      max-height:90vh;
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .lightbox img{
+      max-width:100%;
+      max-height:90vh;
+      border-radius:18px;
+      box-shadow:0 20px 50px rgba(0,0,0,.45);
+    }
+
+    .lightbox-close{
+      position:absolute;
+      top:-12px;
+      right:-12px;
+      width:42px;
+      height:42px;
+      border:none;
+      border-radius:999px;
+      background:#fff;
+      color:#111;
+      font-size:22px;
+      font-weight:700;
+      cursor:pointer;
+      box-shadow:0 10px 24px rgba(0,0,0,.35);
+    }
+
     @media (max-width: 1100px){
       .stats{grid-template-columns:repeat(2,1fr)}
       .cert-grid{grid-template-columns:repeat(3,1fr)}
@@ -437,18 +496,13 @@
     @media (max-width: 900px){
       .hero-grid,
       .about-grid,
-      .projects-grid,
-      .contact-box{
+      .projects-grid{
         grid-template-columns:1fr;
-        display:grid;
       }
 
       .contact-box{
-        display:block;
-      }
-
-      .contact-box .hero-buttons{
-        margin-top:18px;
+        flex-direction:column;
+        align-items:flex-start;
       }
 
       .cert-grid{
@@ -523,6 +577,7 @@
             <a class="btn btn-primary" href="#projects">Projeleri Gör</a>
             <a class="btn btn-secondary" href="mailto:serkansevimgul@gmail.com">Mail Gönder</a>
             <a class="btn btn-secondary" href="https://tr.linkedin.com/in/serkan-sevimg%C3%BCl-9616261a1" target="_blank">LinkedIn</a>
+            <a class="btn btn-secondary" href="cv.pdf" download>CV İndir</a>
           </div>
 
           <div class="stats">
@@ -605,17 +660,19 @@
     <div class="container">
       <div class="section-title">
         <div class="mini">Seçili Projeler</div>
-        <h2>Projelerimi artık sadece göstermiyor, anlatıyorum</h2>
+        <h2>Üzerinde çalıştığım projeler</h2>
         <p>
-          Buradaki yapı özellikle daha profesyonel görünmesi için düzenlendi.
-          Her proje; ihtiyaç, çözüm ve sonuç mantığıyla sunuluyor.
+          Aşağıda yer alan projeler, mekanik tasarım ve ürün geliştirme alanında edindiğim tecrübeyi yansıtmaktadır.
+          Her projede ihtiyacı doğru analiz edip uygulanabilir, üretilebilir ve saha koşullarına uygun çözümler geliştirmeyi hedefledim.
         </p>
       </div>
 
       <div class="projects-grid">
 
         <article class="project-card">
-          <img class="project-image" src="water-spray-bar.png" alt="Water Spray Bar System">
+          <div class="project-image-wrap">
+            <img class="project-image" src="water-spray-bar.png" alt="Water Spray Bar System">
+          </div>
           <div class="project-content">
             <div class="project-top">
               <div>
@@ -636,7 +693,9 @@
         </article>
 
         <article class="project-card">
-          <img class="project-image" src="triple-brush.png" alt="Triple Brush Sweeping System">
+          <div class="project-image-wrap">
+            <img class="project-image" src="triple-brush.png" alt="Triple Brush Sweeping System">
+          </div>
           <div class="project-content">
             <div class="project-top">
               <div>
@@ -657,7 +716,9 @@
         </article>
 
         <article class="project-card">
-          <img class="project-image" src="heated-undercarriage.png" alt="Heated Airport Sweeping Undercarriage">
+          <div class="project-image-wrap">
+            <img class="project-image" src="heated-undercarriage.png" alt="Heated Airport Sweeping Undercarriage">
+          </div>
           <div class="project-content">
             <div class="project-top">
               <div>
@@ -678,7 +739,9 @@
         </article>
 
         <article class="project-card">
-          <img class="project-image" src="magnetic-photo.png" alt="Magnetic Metal Collection System">
+          <div class="project-image-wrap">
+            <img class="project-image" src="magnetic-photo.png" alt="Magnetic Metal Collection System">
+          </div>
           <div class="project-content">
             <div class="project-top">
               <div>
@@ -708,13 +771,12 @@
         <div class="mini">Sertifikalar</div>
         <h2>Eğitim ve gelişim alanlarım</h2>
         <p>
-          Aşağıdaki sertifikalar mevcut dosya adlarına göre siteye yerleştirildi.
-          İstersen bir sonraki adımda bunları tarih, kurum ve kategoriye göre de düzenleriz.
+          Bu bölümde yer alan sertifikalar, teknik bilgi birikimimi ve mesleki gelişime verdiğim önemi yansıtmaktadır.
         </p>
       </div>
 
       <div class="cert-grid">
-        <div class="cert-card">
+        <div class="cert-card" onclick="openLightbox('certificate-ford-trucks.jpg')">
           <img src="certificate-ford-trucks.jpg" alt="Ford Trucks certificate">
           <div class="cert-body">
             <h4>Ford Trucks</h4>
@@ -722,7 +784,7 @@
           </div>
         </div>
 
-        <div class="cert-card">
+        <div class="cert-card" onclick="openLightbox('certificate-project-management.jpg')">
           <img src="certificate-project-management.jpg" alt="Project Management certificate">
           <div class="cert-body">
             <h4>Project Management</h4>
@@ -730,7 +792,7 @@
           </div>
         </div>
 
-        <div class="cert-card">
+        <div class="cert-card" onclick="openLightbox('certificate-quality-control.jpg')">
           <img src="certificate-quality-control.jpg" alt="Quality Control certificate">
           <div class="cert-body">
             <h4>Quality Control</h4>
@@ -738,7 +800,7 @@
           </div>
         </div>
 
-        <div class="cert-card">
+        <div class="cert-card" onclick="openLightbox('certificate-solidworks-advanced.jpg')">
           <img src="certificate-solidworks-advanced.jpg" alt="SolidWorks Advanced certificate">
           <div class="cert-body">
             <h4>SolidWorks Advanced</h4>
@@ -746,7 +808,7 @@
           </div>
         </div>
 
-        <div class="cert-card">
+        <div class="cert-card" onclick="openLightbox('certificate-solidworks-basic.jpg')">
           <img src="certificate-solidworks-basic.jpg" alt="SolidWorks Basic certificate">
           <div class="cert-body">
             <h4>SolidWorks Basic</h4>
@@ -754,7 +816,7 @@
           </div>
         </div>
 
-        <div class="cert-card">
+        <div class="cert-card" onclick="openLightbox('certificate-solidworks-routing.jpg')">
           <img src="certificate-solidworks-routing.jpg" alt="SolidWorks Routing certificate">
           <div class="cert-body">
             <h4>SolidWorks Routing</h4>
@@ -762,7 +824,7 @@
           </div>
         </div>
 
-        <div class="cert-card">
+        <div class="cert-card" onclick="openLightbox('certificate-uagem.jpg')">
           <img src="certificate-uagem.jpg" alt="UAGEM certificate">
           <div class="cert-body">
             <h4>UAGEM</h4>
@@ -770,7 +832,7 @@
           </div>
         </div>
 
-        <div class="cert-card">
+        <div class="cert-card" onclick="openLightbox('certificate1.jpg')">
           <img src="certificate1.jpg" alt="Certificate 1">
           <div class="cert-body">
             <h4>Certificate 1</h4>
@@ -778,7 +840,7 @@
           </div>
         </div>
 
-        <div class="cert-card">
+        <div class="cert-card" onclick="openLightbox('certificate2.jpg')">
           <img src="certificate2.jpg" alt="Certificate 2">
           <div class="cert-body">
             <h4>Certificate 2</h4>
@@ -786,7 +848,7 @@
           </div>
         </div>
 
-        <div class="cert-card">
+        <div class="cert-card" onclick="openLightbox('certificate3.jpg')">
           <img src="certificate3.jpg" alt="Certificate 3">
           <div class="cert-body">
             <h4>Certificate 3</h4>
@@ -794,7 +856,7 @@
           </div>
         </div>
 
-        <div class="cert-card">
+        <div class="cert-card" onclick="openLightbox('certificate4.jpg')">
           <img src="certificate4.jpg" alt="Certificate 4">
           <div class="cert-body">
             <h4>Certificate 4</h4>
@@ -802,7 +864,7 @@
           </div>
         </div>
 
-        <div class="cert-card">
+        <div class="cert-card" onclick="openLightbox('certificate5.jpg')">
           <img src="certificate5.jpg" alt="Certificate 5">
           <div class="cert-body">
             <h4>Certificate 5</h4>
@@ -810,7 +872,7 @@
           </div>
         </div>
 
-        <div class="cert-card">
+        <div class="cert-card" onclick="openLightbox('certificate6.jpg')">
           <img src="certificate6.jpg" alt="Certificate 6">
           <div class="cert-body">
             <h4>Certificate 6</h4>
@@ -818,7 +880,7 @@
           </div>
         </div>
 
-        <div class="cert-card">
+        <div class="cert-card" onclick="openLightbox('certificate7.jpg')">
           <img src="certificate7.jpg" alt="Certificate 7">
           <div class="cert-body">
             <h4>Certificate 7</h4>
@@ -836,7 +898,7 @@
           <h3>Birlikte daha güçlü projeler üretelim</h3>
           <p>
             Mekanik tasarım, ürün geliştirme, endüstriyel araç sistemleri ve mühendislik odaklı
-            profesyonel bağlantılar için benimle iletişime geçebilirsin.
+            profesyonel bağlantılar için benimle iletişime geçebilirsiniz.
           </p>
         </div>
 
@@ -853,6 +915,42 @@
       © 2026 Serkan Sevimgül • Mechanical Design Portfolio
     </div>
   </footer>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-content">
+      <button class="lightbox-close" onclick="closeLightbox(event)">×</button>
+      <img id="lightboxImage" src="" alt="Certificate Preview">
+    </div>
+  </div>
+
+  <script>
+    function openLightbox(src) {
+      const lightbox = document.getElementById('lightbox');
+      const image = document.getElementById('lightboxImage');
+      image.src = src;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(event) {
+      if (
+        event.target.id === 'lightbox' ||
+        event.target.classList.contains('lightbox-close')
+      ) {
+        document.getElementById('lightbox').classList.remove('active');
+        document.getElementById('lightboxImage').src = '';
+        document.body.style.overflow = '';
+      }
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.getElementById('lightbox').classList.remove('active');
+        document.getElementById('lightboxImage').src = '';
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
 
 </body>
 </html>
