@@ -8,15 +8,37 @@
   <style>
     :root{
       --bg:#0b0b0d;
+      --bg-2:#101116;
       --card:#16181d;
       --card-2:#1b1e25;
       --text:#f4f4f6;
       --muted:#b6b8c2;
       --line:rgba(255,255,255,.08);
       --yellow:#facc15;
+      --yellow-2:#fde68a;
       --red:#ef4444;
       --shadow:0 20px 40px rgba(0,0,0,.28);
+      --shadow-soft:0 12px 28px rgba(0,0,0,.2);
       --radius:24px;
+      --hero-grad-1:rgba(250,204,21,.10);
+      --hero-grad-2:rgba(239,68,68,.10);
+    }
+
+    body.light{
+      --bg:#f7f7fa;
+      --bg-2:#f1f3f7;
+      --card:#ffffff;
+      --card-2:#f3f5f9;
+      --text:#17181b;
+      --muted:#5d6470;
+      --line:rgba(0,0,0,.08);
+      --yellow:#eab308;
+      --yellow-2:#a16207;
+      --red:#dc2626;
+      --shadow:0 18px 34px rgba(0,0,0,.08);
+      --shadow-soft:0 10px 22px rgba(0,0,0,.06);
+      --hero-grad-1:rgba(234,179,8,.10);
+      --hero-grad-2:rgba(220,38,38,.08);
     }
 
     *{box-sizing:border-box}
@@ -26,14 +48,16 @@
       font-family:Arial, Helvetica, sans-serif;
       color:var(--text);
       background:
-        radial-gradient(circle at top left, rgba(250,204,21,.10), transparent 24%),
-        radial-gradient(circle at top right, rgba(239,68,68,.10), transparent 28%),
-        linear-gradient(180deg, #0b0b0d 0%, #101116 100%);
+        radial-gradient(circle at top left, var(--hero-grad-1), transparent 24%),
+        radial-gradient(circle at top right, var(--hero-grad-2), transparent 28%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
       overflow-x:hidden;
+      transition:background .3s ease,color .3s ease;
     }
 
     a{color:inherit;text-decoration:none}
     img{display:block;max-width:100%}
+    button{font-family:inherit}
 
     .container{
       width:min(1200px, calc(100% - 32px));
@@ -56,7 +80,7 @@
       top:0;
       z-index:1000;
       backdrop-filter:blur(12px);
-      background:rgba(11,11,13,.78);
+      background:color-mix(in srgb, var(--bg) 78%, transparent);
       border-bottom:1px solid var(--line);
     }
 
@@ -81,6 +105,7 @@
       align-items:center;
       gap:16px;
       flex-wrap:wrap;
+      justify-content:flex-end;
     }
 
     .nav-links{
@@ -95,30 +120,44 @@
       transition:.25s ease;
     }
 
-    .nav-links a:hover{color:#fff}
+    .nav-links a:hover{color:var(--text)}
 
-    .lang-switch{
+    .top-controls{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .lang-switch,
+    .theme-switch{
       display:flex;
       gap:8px;
       padding:4px;
       border:1px solid var(--line);
       background:rgba(255,255,255,.04);
       border-radius:999px;
+      box-shadow:var(--shadow-soft);
     }
 
-    .lang-btn{
+    .lang-btn,
+    .theme-btn{
       border:none;
       background:transparent;
-      color:#fff;
+      color:var(--text);
       padding:8px 12px;
       border-radius:999px;
       cursor:pointer;
       font-weight:700;
       font-size:12px;
       transition:.25s ease;
+      display:flex;
+      align-items:center;
+      gap:6px;
     }
 
-    .lang-btn.active{
+    .lang-btn.active,
+    .theme-btn.active{
       background:var(--yellow);
       color:#111;
     }
@@ -138,6 +177,7 @@
       top:-120px;
       left:-100px;
       pointer-events:none;
+      filter:blur(6px);
     }
 
     .hero::after{
@@ -149,6 +189,7 @@
       right:-100px;
       top:20px;
       pointer-events:none;
+      filter:blur(6px);
     }
 
     .hero-grid{
@@ -165,7 +206,7 @@
       padding:10px 14px;
       border:1px solid rgba(250,204,21,.20);
       background:rgba(250,204,21,.08);
-      color:#fde68a;
+      color:var(--yellow-2);
       border-radius:999px;
       font-size:13px;
       margin-bottom:18px;
@@ -192,7 +233,7 @@
     }
 
     .hero-card{
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      background:linear-gradient(180deg, color-mix(in srgb, var(--card) 82%, white 8%), var(--card));
       border:1px solid var(--line);
       border-radius:30px;
       overflow:hidden;
@@ -243,6 +284,7 @@
       border-radius:20px;
       padding:18px;
       transition:.25s ease;
+      box-shadow:var(--shadow-soft);
     }
 
     .stat:hover{
@@ -270,7 +312,7 @@
     }
 
     .mini{
-      color:#fde68a;
+      color:var(--yellow-2);
       text-transform:uppercase;
       letter-spacing:.12em;
       font-size:13px;
@@ -331,14 +373,15 @@
       border-radius:999px;
       background:var(--card-2);
       border:1px solid var(--line);
-      color:#e7e8ec;
+      color:var(--text);
       font-size:14px;
       transition:.25s ease;
     }
 
     .tag:hover{
       border-color:rgba(250,204,21,.22);
-      color:#fff;
+      color:var(--text);
+      transform:translateY(-2px);
     }
 
     .tools-grid{
@@ -423,8 +466,31 @@
       content:"";
       position:absolute;
       inset:0;
-      background:linear-gradient(180deg, transparent 55%, rgba(0,0,0,.10));
+      background:linear-gradient(180deg, transparent 55%, rgba(0,0,0,.18));
       pointer-events:none;
+    }
+
+    .project-overlay{
+      position:absolute;
+      left:16px;
+      bottom:16px;
+      z-index:2;
+      padding:10px 14px;
+      border-radius:999px;
+      background:rgba(0,0,0,.6);
+      color:#fff;
+      border:1px solid rgba(255,255,255,.18);
+      backdrop-filter:blur(8px);
+      font-size:13px;
+      font-weight:700;
+      opacity:0;
+      transform:translateY(10px);
+      transition:.28s ease;
+    }
+
+    .project-card:hover .project-overlay{
+      opacity:1;
+      transform:translateY(0);
     }
 
     .project-image{
@@ -467,7 +533,7 @@
 
     .project-sub{
       margin:0 0 14px;
-      color:#fde68a;
+      color:var(--yellow-2);
       font-size:15px;
     }
 
@@ -477,7 +543,7 @@
       margin:10px 0;
     }
 
-    .case-line strong{color:#fff}
+    .case-line strong{color:var(--text)}
 
     .filter-bar{
       display:flex;
@@ -491,7 +557,7 @@
       border-radius:999px;
       border:1px solid var(--line);
       background:rgba(255,255,255,.04);
-      color:#e6e7eb;
+      color:var(--text);
       cursor:pointer;
       transition:.25s ease;
       font-weight:700;
@@ -573,20 +639,21 @@
 
     .contact-box p{
       margin:0;
-      color:#e6e6eb;
+      color:var(--text);
+      opacity:.92;
       line-height:1.75;
       max-width:760px;
     }
 
     .contact-details{
       margin-top:14px;
-      color:#f3f4f6;
+      color:var(--text);
       line-height:1.8;
       font-size:15px;
     }
 
     .contact-details a{
-      color:#fff;
+      color:var(--text);
       font-weight:700;
     }
 
@@ -607,9 +674,9 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      background:rgba(20,20,25,.92);
-      border:1px solid rgba(255,255,255,.08);
-      box-shadow:0 16px 34px rgba(0,0,0,.32);
+      background:color-mix(in srgb, var(--card) 90%, transparent);
+      border:1px solid var(--line);
+      box-shadow:0 16px 34px rgba(0,0,0,.22);
       transition:.28s ease;
       backdrop-filter:blur(8px);
       position:relative;
@@ -618,7 +685,7 @@
     .floating-btn:hover{
       transform:translateY(-4px) scale(1.03);
       border-color:rgba(250,204,21,.24);
-      background:rgba(30,30,36,.98);
+      background:var(--card);
     }
 
     .floating-btn svg{
@@ -631,8 +698,8 @@
       position:absolute;
       right:68px;
       white-space:nowrap;
-      background:#16181d;
-      color:#fff;
+      background:var(--card);
+      color:var(--text);
       border:1px solid var(--line);
       padding:8px 12px;
       border-radius:12px;
@@ -641,6 +708,7 @@
       transform:translateX(8px);
       pointer-events:none;
       transition:.25s ease;
+      box-shadow:var(--shadow-soft);
     }
 
     .floating-btn:hover span{
@@ -648,9 +716,19 @@
       transform:translateX(0);
     }
 
+    .cv-pulse{
+      animation:cvPulse 2.4s infinite;
+    }
+
+    @keyframes cvPulse{
+      0%{box-shadow:0 0 0 0 rgba(250,204,21,.36),0 16px 34px rgba(0,0,0,.22)}
+      70%{box-shadow:0 0 0 14px rgba(250,204,21,0),0 16px 34px rgba(0,0,0,.22)}
+      100%{box-shadow:0 0 0 0 rgba(250,204,21,0),0 16px 34px rgba(0,0,0,.22)}
+    }
+
     footer{
       padding:26px 0 40px;
-      color:#8d8d97;
+      color:var(--muted);
       text-align:center;
       border-top:1px solid var(--line);
       margin-top:26px;
@@ -779,9 +857,17 @@
           <a href="#certificates" data-i18n="nav_certificates">Sertifikalar</a>
           <a href="#contact" data-i18n="nav_contact">İletişim</a>
         </div>
-        <div class="lang-switch">
-          <button class="lang-btn active" data-lang="tr">TR</button>
-          <button class="lang-btn" data-lang="en">EN</button>
+
+        <div class="top-controls">
+          <div class="lang-switch">
+            <button class="lang-btn active" data-lang="tr">🇹🇷 TR</button>
+            <button class="lang-btn" data-lang="en">🇬🇧 EN</button>
+          </div>
+
+          <div class="theme-switch">
+            <button class="theme-btn active" data-theme="dark">🌙</button>
+            <button class="theme-btn" data-theme="light">☀️</button>
+          </div>
         </div>
       </div>
     </div>
@@ -895,9 +981,7 @@
             <svg viewBox="0 0 24 24"><path d="M4 4h7v7H4V4zm9 0h7v7h-7V4zM4 13h7v7H4v-7zm9 2h7v3h-7v-3z"/></svg>
           </div>
           <h3>SolidWorks</h3>
-          <p data-i18n="tool_sw">
-            3D modelleme, montaj tasarımı, teknik resim ve mekanik sistem geliştirme süreçlerinde aktif olarak kullanıyorum.
-          </p>
+          <p data-i18n="tool_sw">3D modelleme, montaj tasarımı, teknik resim ve mekanik sistem geliştirme süreçlerinde aktif olarak kullanıyorum.</p>
         </div>
 
         <div class="tool-card reveal">
@@ -905,9 +989,7 @@
             <svg viewBox="0 0 24 24"><path d="M3 17l6-10 4 6 3-4 5 8H3z"/></svg>
           </div>
           <h3>AutoCAD</h3>
-          <p data-i18n="tool_acad">
-            2D teknik çizimler, üretim detayları ve proje dokümantasyonu için kullandığım temel araçlardan biridir.
-          </p>
+          <p data-i18n="tool_acad">2D teknik çizimler, üretim detayları ve proje dokümantasyonu için kullandığım temel araçlardan biridir.</p>
         </div>
 
         <div class="tool-card reveal">
@@ -915,9 +997,7 @@
             <svg viewBox="0 0 24 24"><path d="M5 4h10l4 4v12H5V4zm9 1.5V9h3.5L14 5.5zM8 13h8v2H8v-2zm0 4h8v2H8v-2z"/></svg>
           </div>
           <h3>PDM</h3>
-          <p data-i18n="tool_pdm">
-            Dosya yönetimi, revizyon kontrolü ve mühendislik verilerinin düzenli takibi için kullanıyorum.
-          </p>
+          <p data-i18n="tool_pdm">Dosya yönetimi, revizyon kontrolü ve mühendislik verilerinin düzenli takibi için kullanıyorum.</p>
         </div>
 
         <div class="tool-card reveal">
@@ -925,9 +1005,7 @@
             <svg viewBox="0 0 24 24"><path d="M4 5h16v4H4V5zm0 5h16v4H4v-4zm0 5h16v4H4v-4z"/></svg>
           </div>
           <h3>CANIAS ERP</h3>
-          <p data-i18n="tool_canias">
-            Kurumsal süreçler, ürün verileri ve üretimle ilişkili operasyonel akışların takibinde yararlandığım sistemdir.
-          </p>
+          <p data-i18n="tool_canias">Kurumsal süreçler, ürün verileri ve üretimle ilişkili operasyonel akışların takibinde yararlandığım sistemdir.</p>
         </div>
 
         <div class="tool-card reveal">
@@ -935,9 +1013,7 @@
             <svg viewBox="0 0 24 24"><path d="M12 2l3 6 6 3-6 3-3 6-3-6-6-3 6-3 3-6z"/></svg>
           </div>
           <h3>Mechanical Design</h3>
-          <p data-i18n="tool_md">
-            Mekanik sistem kurgusu, işlevsel çözüm üretimi, montaj uyumu ve saha gerçeklerine uygun tasarım yaklaşımıyla çalışıyorum.
-          </p>
+          <p data-i18n="tool_md">Mekanik sistem kurgusu, işlevsel çözüm üretimi, montaj uyumu ve saha gerçeklerine uygun tasarım yaklaşımıyla çalışıyorum.</p>
         </div>
 
         <div class="tool-card reveal">
@@ -945,9 +1021,7 @@
             <svg viewBox="0 0 24 24"><path d="M12 3l9 5v8l-9 5-9-5V8l9-5zm0 2.2L5 9v6l7 3.8 7-3.8V9l-7-3.8z"/></svg>
           </div>
           <h3>Product Development</h3>
-          <p data-i18n="tool_pd">
-            İhtiyaç analizi, tasarım iyileştirme, üretilebilirlik ve ürünün sahadaki performansını birlikte düşünerek geliştirme yapıyorum.
-          </p>
+          <p data-i18n="tool_pd">İhtiyaç analizi, tasarım iyileştirme, üretilebilirlik ve ürünün sahadaki performansını birlikte düşünerek geliştirme yapıyorum.</p>
         </div>
       </div>
     </div>
@@ -967,12 +1041,13 @@
       <div class="projects-grid">
         <article class="project-card reveal">
           <div class="project-image-wrap">
+            <div class="project-overlay" data-i18n="detail_view">Detay Gör</div>
             <img class="project-image" src="water-spray-bar.png" alt="Water Spray Bar System">
           </div>
           <div class="project-content">
             <div class="project-top">
               <div>
-                <h3>Water Spray Bar System</h3>
+                <h3 data-i18n="proj1_title">Su Püskürtme Barı Sistemi</h3>
                 <p class="project-sub" data-i18n="proj1_sub">Ayarlanabilir ön su püskürtme barı sistemi</p>
               </div>
               <div class="project-badge" data-i18n="badge_industrial">Industrial Vehicle</div>
@@ -990,12 +1065,13 @@
 
         <article class="project-card reveal">
           <div class="project-image-wrap">
+            <div class="project-overlay" data-i18n="detail_view">Detay Gör</div>
             <img class="project-image" src="triple-brush.png" alt="Triple Brush Sweeping System">
           </div>
           <div class="project-content">
             <div class="project-top">
               <div>
-                <h3>Triple Brush Sweeping System</h3>
+                <h3 data-i18n="proj2_title">Üçlü Fırça Süpürme Sistemi</h3>
                 <p class="project-sub" data-i18n="proj2_sub">Daha geniş temizleme alanı ve yüksek verim</p>
               </div>
               <div class="project-badge" data-i18n="badge_sweeping">Sweeping System</div>
@@ -1013,12 +1089,13 @@
 
         <article class="project-card reveal">
           <div class="project-image-wrap">
+            <div class="project-overlay" data-i18n="detail_view">Detay Gör</div>
             <img class="project-image" src="heated-undercarriage.png" alt="Heated Airport Sweeping Undercarriage">
           </div>
           <div class="project-content">
             <div class="project-top">
               <div>
-                <h3>Heated Undercarriage</h3>
+                <h3 data-i18n="proj3_title">Isıtmalı Alt Şasi Sistemi</h3>
                 <p class="project-sub" data-i18n="proj3_sub">Soğuk hava ve zorlu iklimler için özel çözüm</p>
               </div>
               <div class="project-badge" data-i18n="badge_cold">Cold Climate</div>
@@ -1036,12 +1113,13 @@
 
         <article class="project-card reveal">
           <div class="project-image-wrap">
+            <div class="project-overlay" data-i18n="detail_view">Detay Gör</div>
             <img class="project-image" src="magnetic-photo.png" alt="Magnetic Metal Collection System">
           </div>
           <div class="project-content">
             <div class="project-top">
               <div>
-                <h3>Magnetic Collection System</h3>
+                <h3 data-i18n="proj4_title">Manyetik Toplama Sistemi</h3>
                 <p class="project-sub" data-i18n="proj4_sub">Metal parçacık toplama için manyetik çözüm</p>
               </div>
               <div class="project-badge" data-i18n="badge_field">Field Solution</div>
@@ -1081,72 +1159,72 @@
       <div class="cert-grid">
         <div class="cert-card reveal" data-category="other" onclick="openLightbox('certificate-ford-trucks.jpg')">
           <img src="certificate-ford-trucks.jpg" alt="Ford Trucks certificate">
-          <div class="cert-body"><h4>Ford Trucks</h4><p data-i18n="cert_ford">Kurumsal veya teknik gelişim sertifikası.</p></div>
+          <div class="cert-body"><h4 data-i18n="cert_ford_title">Ford Trucks</h4><p data-i18n="cert_ford">Kurumsal veya teknik gelişim sertifikası.</p></div>
         </div>
 
         <div class="cert-card reveal" data-category="management" onclick="openLightbox('certificate-project-management.jpg')">
           <img src="certificate-project-management.jpg" alt="Project Management certificate">
-          <div class="cert-body"><h4>Project Management</h4><p data-i18n="cert_pm">Proje yönetimi odaklı eğitim sertifikası.</p></div>
+          <div class="cert-body"><h4 data-i18n="cert_pm_title">Proje Yönetimi</h4><p data-i18n="cert_pm">Proje yönetimi odaklı eğitim sertifikası.</p></div>
         </div>
 
         <div class="cert-card reveal" data-category="quality" onclick="openLightbox('certificate-quality-control.jpg')">
           <img src="certificate-quality-control.jpg" alt="Quality Control certificate">
-          <div class="cert-body"><h4>Quality Control</h4><p data-i18n="cert_qc">Kalite kontrol ve süreç yaklaşımı odaklı sertifika.</p></div>
+          <div class="cert-body"><h4 data-i18n="cert_qc_title">Kalite Kontrol</h4><p data-i18n="cert_qc">Kalite kontrol ve süreç yaklaşımı odaklı sertifika.</p></div>
         </div>
 
         <div class="cert-card reveal" data-category="solidworks" onclick="openLightbox('certificate-solidworks-advanced.jpg')">
           <img src="certificate-solidworks-advanced.jpg" alt="SolidWorks Advanced certificate">
-          <div class="cert-body"><h4>SolidWorks Advanced</h4><p data-i18n="cert_swa">İleri seviye SolidWorks yetkinliği.</p></div>
+          <div class="cert-body"><h4 data-i18n="cert_swa_title">SolidWorks İleri Seviye</h4><p data-i18n="cert_swa">İleri seviye SolidWorks yetkinliği.</p></div>
         </div>
 
         <div class="cert-card reveal" data-category="solidworks" onclick="openLightbox('certificate-solidworks-basic.jpg')">
           <img src="certificate-solidworks-basic.jpg" alt="SolidWorks Basic certificate">
-          <div class="cert-body"><h4>SolidWorks Basic</h4><p data-i18n="cert_swb">Temel SolidWorks eğitimi.</p></div>
+          <div class="cert-body"><h4 data-i18n="cert_swb_title">SolidWorks Temel</h4><p data-i18n="cert_swb">Temel SolidWorks eğitimi.</p></div>
         </div>
 
         <div class="cert-card reveal" data-category="solidworks" onclick="openLightbox('certificate-solidworks-routing.jpg')">
           <img src="certificate-solidworks-routing.jpg" alt="SolidWorks Routing certificate">
-          <div class="cert-body"><h4>SolidWorks Routing</h4><p data-i18n="cert_swr">Routing ve sistem yönlendirme eğitimi.</p></div>
+          <div class="cert-body"><h4 data-i18n="cert_swr_title">SolidWorks Routing</h4><p data-i18n="cert_swr">Routing ve sistem yönlendirme eğitimi.</p></div>
         </div>
 
         <div class="cert-card reveal" data-category="other" onclick="openLightbox('certificate-uagem.jpg')">
           <img src="certificate-uagem.jpg" alt="UAGEM certificate">
-          <div class="cert-body"><h4>UAGEM</h4><p data-i18n="cert_uagem">Eğitim veya uzmanlık geliştirme sertifikası.</p></div>
+          <div class="cert-body"><h4 data-i18n="cert_uagem_title">UAGEM</h4><p data-i18n="cert_uagem">Eğitim veya uzmanlık geliştirme sertifikası.</p></div>
         </div>
 
         <div class="cert-card reveal" data-category="other" onclick="openLightbox('certificate1.jpg')">
           <img src="certificate1.jpg" alt="Certificate 1">
-          <div class="cert-body"><h4>Certificate 1</h4><p data-i18n="cert_extra">Ek sertifika görseli.</p></div>
+          <div class="cert-body"><h4 data-i18n="cert_extra_title">Ek Sertifika</h4><p data-i18n="cert_extra">Ek sertifika görseli.</p></div>
         </div>
 
         <div class="cert-card reveal" data-category="other" onclick="openLightbox('certificate2.jpg')">
           <img src="certificate2.jpg" alt="Certificate 2">
-          <div class="cert-body"><h4>Certificate 2</h4><p data-i18n="cert_extra">Ek sertifika görseli.</p></div>
+          <div class="cert-body"><h4 data-i18n="cert_extra_title">Ek Sertifika</h4><p data-i18n="cert_extra">Ek sertifika görseli.</p></div>
         </div>
 
         <div class="cert-card reveal" data-category="other" onclick="openLightbox('certificate3.jpg')">
           <img src="certificate3.jpg" alt="Certificate 3">
-          <div class="cert-body"><h4>Certificate 3</h4><p data-i18n="cert_extra">Ek sertifika görseli.</p></div>
+          <div class="cert-body"><h4 data-i18n="cert_extra_title">Ek Sertifika</h4><p data-i18n="cert_extra">Ek sertifika görseli.</p></div>
         </div>
 
         <div class="cert-card reveal" data-category="other" onclick="openLightbox('certificate4.jpg')">
           <img src="certificate4.jpg" alt="Certificate 4">
-          <div class="cert-body"><h4>Certificate 4</h4><p data-i18n="cert_extra">Ek sertifika görseli.</p></div>
+          <div class="cert-body"><h4 data-i18n="cert_extra_title">Ek Sertifika</h4><p data-i18n="cert_extra">Ek sertifika görseli.</p></div>
         </div>
 
         <div class="cert-card reveal" data-category="other" onclick="openLightbox('certificate5.jpg')">
           <img src="certificate5.jpg" alt="Certificate 5">
-          <div class="cert-body"><h4>Certificate 5</h4><p data-i18n="cert_extra">Ek sertifika görseli.</p></div>
+          <div class="cert-body"><h4 data-i18n="cert_extra_title">Ek Sertifika</h4><p data-i18n="cert_extra">Ek sertifika görseli.</p></div>
         </div>
 
         <div class="cert-card reveal" data-category="other" onclick="openLightbox('certificate6.jpg')">
           <img src="certificate6.jpg" alt="Certificate 6">
-          <div class="cert-body"><h4>Certificate 6</h4><p data-i18n="cert_extra">Ek sertifika görseli.</p></div>
+          <div class="cert-body"><h4 data-i18n="cert_extra_title">Ek Sertifika</h4><p data-i18n="cert_extra">Ek sertifika görseli.</p></div>
         </div>
 
         <div class="cert-card reveal" data-category="other" onclick="openLightbox('certificate7.jpg')">
           <img src="certificate7.jpg" alt="Certificate 7">
-          <div class="cert-body"><h4>Certificate 7</h4><p data-i18n="cert_extra">Ek sertifika görseli.</p></div>
+          <div class="cert-body"><h4 data-i18n="cert_extra_title">Ek Sertifika</h4><p data-i18n="cert_extra">Ek sertifika görseli.</p></div>
         </div>
       </div>
     </div>
@@ -1162,7 +1240,6 @@
         </p>
         <div class="contact-details">
           <div><strong data-i18n="email_label">E-posta:</strong> <a href="mailto:serkansevimgul@gmail.com">serkansevimgul@gmail.com</a></div>
-          <div><strong data-i18n="phone_label">Telefon:</strong> <a href="tel:+905456261194">0545 626 11 94</a></div>
           <div><strong>LinkedIn:</strong> <a href="https://tr.linkedin.com/in/serkan-sevimg%C3%BCl-9616261a1" target="_blank" data-i18n="linkedin_view">Profilimi Görüntüle</a></div>
         </div>
       </div>
@@ -1191,7 +1268,7 @@
       <svg viewBox="0 0 24 24"><path d="M6.94 8.5A1.56 1.56 0 1 1 6.93 5.4a1.56 1.56 0 0 1 .01 3.1zM5.5 9.75h2.88V19H5.5V9.75zm4.68 0h2.76v1.26h.04c.38-.73 1.32-1.5 2.72-1.5 2.9 0 3.44 1.9 3.44 4.38V19h-2.88v-4.47c0-1.07-.02-2.44-1.49-2.44-1.49 0-1.71 1.16-1.71 2.36V19h-2.88V9.75z"/></svg>
     </a>
 
-    <a class="floating-btn" href="cv.pdf" download aria-label="CV">
+    <a class="floating-btn cv-pulse" href="cv.pdf" download aria-label="CV">
       <span>CV</span>
       <svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm8 1.5V8h4.5L14 3.5zM8 12h8v1.8H8V12zm0 3.5h8v1.8H8v-1.8zm0 3.5h5v1.8H8V19z"/></svg>
     </a>
@@ -1226,7 +1303,7 @@
         stat_approach_label: "Yaklaşım",
         stat_approach_value: "Saha Odaklı",
 
-        hero_card_title: "Product Development Design Specialist",
+        hero_card_title: "Ürün Geliştirme Tasarım Uzmanı",
         hero_card_p: "Endüstriyel araçlarda mekanik sistem geliştirme, teknik resim, montaj yapıları, üretim uygunluğu ve saha verisine göre ürün iyileştirme.",
 
         about_mini: "Hakkımda",
@@ -1249,31 +1326,36 @@
         projects_mini: "Seçili Projeler",
         projects_title: "Üzerinde çalıştığım projeler",
         projects_p: "Aşağıda yer alan projeler, mekanik tasarım ve ürün geliştirme alanında edindiğim tecrübeyi yansıtmaktadır. Her projede ihtiyacı doğru analiz edip uygulanabilir, üretilebilir ve saha koşullarına uygun çözümler geliştirmeyi hedefledim.",
+        detail_view: "Detay Gör",
 
-        badge_industrial: "Industrial Vehicle",
-        badge_sweeping: "Sweeping System",
-        badge_cold: "Cold Climate",
-        badge_field: "Field Solution",
+        badge_industrial: "Endüstriyel Araç",
+        badge_sweeping: "Süpürme Sistemi",
+        badge_cold: "Soğuk İklim",
+        badge_field: "Saha Çözümü",
 
         need_label: "İhtiyaç:",
         solution_label: "Çözüm:",
         result_label: "Sonuç:",
 
+        proj1_title: "Su Püskürtme Barı Sistemi",
         proj1_sub: "Ayarlanabilir ön su püskürtme barı sistemi",
         proj1_need: "Süpürme sırasında toz kontrolünü daha verimli hale getirmek ve su dağılımını daha kontrollü sağlamak.",
         proj1_solution: "Ön tarafa entegre edilen hareketli ve ayarlanabilir su püskürtme barı tasarımı geliştirildi.",
         proj1_result: "Çalışma yüzeyinde daha dengeli su dağılımı ve daha iyi toz bastırma performansı hedeflendi.",
 
+        proj2_title: "Üçlü Fırça Süpürme Sistemi",
         proj2_sub: "Daha geniş temizleme alanı ve yüksek verim",
         proj2_need: "Temizleme genişliğini artırmak ve yüzey süpürme verimini iyileştirmek.",
         proj2_solution: "Çoklu fırça yapısına sahip, çalışma alanını genişleten ve mekanik uyumu gözeten sistem tasarımı geliştirildi.",
         proj2_result: "Süpürme kapsamını artıran ve operasyonel verimliliği destekleyen yapı ortaya çıkarıldı.",
 
+        proj3_title: "Isıtmalı Alt Şasi Sistemi",
         proj3_sub: "Soğuk hava ve zorlu iklimler için özel çözüm",
         proj3_need: "Düşük sıcaklıklarda çalışan araçlarda performans sürekliliğini desteklemek.",
         proj3_solution: "Özellikle zorlu iklim koşullarına uygun alt sistem yaklaşımıyla ısı destekli yapı tasarlandı.",
         proj3_result: "Kış şartlarında operasyon güvenilirliğini destekleyen daha dayanıklı bir çözüm ortaya kondu.",
 
+        proj4_title: "Manyetik Toplama Sistemi",
         proj4_sub: "Metal parçacık toplama için manyetik çözüm",
         proj4_need: "Yüzeyde bulunan metal parçaların güvenli şekilde toplanabilmesi.",
         proj4_solution: "Araç ön yapısına entegre edilen manyetik toplama sistemi tasarlandı.",
@@ -1287,6 +1369,16 @@
         filter_management: "Yönetim",
         filter_quality: "Kalite",
         filter_other: "Diğer",
+
+        cert_ford_title: "Ford Trucks",
+        cert_pm_title: "Proje Yönetimi",
+        cert_qc_title: "Kalite Kontrol",
+        cert_swa_title: "SolidWorks İleri Seviye",
+        cert_swb_title: "SolidWorks Temel",
+        cert_swr_title: "SolidWorks Routing",
+        cert_uagem_title: "UAGEM",
+        cert_extra_title: "Ek Sertifika",
+
         cert_ford: "Kurumsal veya teknik gelişim sertifikası.",
         cert_pm: "Proje yönetimi odaklı eğitim sertifikası.",
         cert_qc: "Kalite kontrol ve süreç yaklaşımı odaklı sertifika.",
@@ -1299,10 +1391,9 @@
         contact_title: "İletişim",
         contact_p: "Mekanik tasarım, ürün geliştirme, endüstriyel araç sistemleri ve mühendislik odaklı profesyonel bağlantılar için benimle iletişime geçebilirsiniz.",
         email_label: "E-posta:",
-        phone_label: "Telefon:",
         linkedin_view: "Profilimi Görüntüle",
 
-        footer_text: "Mechanical Design Portfolio",
+        footer_text: "Mekanik Tasarım Portfolyosu",
         float_phone: "Telefon",
         float_mail: "Mail"
       },
@@ -1350,6 +1441,7 @@
         projects_mini: "Selected Projects",
         projects_title: "Projects I have worked on",
         projects_p: "The projects below reflect my experience in mechanical design and product development. In each project, I aimed to analyze the need accurately and develop applicable, manufacturable, and field-suitable solutions.",
+        detail_view: "View Details",
 
         badge_industrial: "Industrial Vehicle",
         badge_sweeping: "Sweeping System",
@@ -1360,21 +1452,25 @@
         solution_label: "Solution:",
         result_label: "Result:",
 
+        proj1_title: "Water Spray Bar System",
         proj1_sub: "Adjustable front water spray bar system",
         proj1_need: "To improve dust control during sweeping operations and provide more controlled water distribution.",
         proj1_solution: "A movable and adjustable front-integrated water spray bar system was developed.",
         proj1_result: "A more balanced water distribution across the working surface and improved dust suppression performance were targeted.",
 
+        proj2_title: "Triple Brush Sweeping System",
         proj2_sub: "Wider cleaning coverage and higher efficiency",
         proj2_need: "To increase cleaning width and improve surface sweeping efficiency.",
         proj2_solution: "A multi-brush system was developed to widen the working area while maintaining mechanical compatibility.",
         proj2_result: "A structure that supports greater sweeping coverage and operational efficiency was achieved.",
 
+        proj3_title: "Heated Undercarriage System",
         proj3_sub: "Special solution for cold and harsh climates",
         proj3_need: "To support performance continuity in vehicles operating at low temperatures.",
         proj3_solution: "A heat-supported substructure was designed with a system approach suitable for harsh climate conditions.",
         proj3_result: "A more durable solution supporting operational reliability in winter conditions was presented.",
 
+        proj4_title: "Magnetic Collection System",
         proj4_sub: "Magnetic solution for collecting metal particles",
         proj4_need: "To enable safe collection of metal parts found on the road surface.",
         proj4_solution: "A magnetic collection system integrated into the front structure of the vehicle was designed.",
@@ -1388,6 +1484,16 @@
         filter_management: "Management",
         filter_quality: "Quality",
         filter_other: "Other",
+
+        cert_ford_title: "Ford Trucks",
+        cert_pm_title: "Project Management",
+        cert_qc_title: "Quality Control",
+        cert_swa_title: "SolidWorks Advanced",
+        cert_swb_title: "SolidWorks Basic",
+        cert_swr_title: "SolidWorks Routing",
+        cert_uagem_title: "UAGEM",
+        cert_extra_title: "Additional Certificate",
+
         cert_ford: "Corporate or technical development certificate.",
         cert_pm: "Project management focused training certificate.",
         cert_qc: "Certificate focused on quality control and process approach.",
@@ -1400,7 +1506,6 @@
         contact_title: "Contact",
         contact_p: "You can contact me for mechanical design, product development, industrial vehicle systems, and engineering-focused professional connections.",
         email_label: "Email:",
-        phone_label: "Phone:",
         linkedin_view: "View My Profile",
 
         footer_text: "Mechanical Design Portfolio",
@@ -1429,8 +1534,22 @@
       btn.addEventListener("click", () => setLanguage(btn.dataset.lang));
     });
 
+    function setTheme(theme){
+      localStorage.setItem("siteTheme", theme);
+      document.body.classList.toggle("light", theme === "light");
+      document.querySelectorAll(".theme-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.theme === theme);
+      });
+    }
+
+    document.querySelectorAll(".theme-btn").forEach(btn => {
+      btn.addEventListener("click", () => setTheme(btn.dataset.theme));
+    });
+
     const savedLang = localStorage.getItem("siteLang") || "tr";
+    const savedTheme = localStorage.getItem("siteTheme") || "dark";
     setLanguage(savedLang);
+    setTheme(savedTheme);
 
     function openLightbox(src){
       const lightbox = document.getElementById('lightbox');
