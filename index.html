@@ -26,7 +26,7 @@
 
     body.light{
       --bg:#f7f7fa;
-      --bg-2:#f1f3f7;
+      --bg-2:#eef1f6;
       --card:#ffffff;
       --card-2:#f3f5f9;
       --text:#17181b;
@@ -58,6 +58,59 @@
     a{color:inherit;text-decoration:none}
     img{display:block;max-width:100%}
     button{font-family:inherit}
+
+    #loader{
+      position:fixed;
+      inset:0;
+      background:#0b0b0d;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:99999;
+      transition:opacity .6s ease, visibility .6s ease;
+    }
+
+    #loader.hide{
+      opacity:0;
+      visibility:hidden;
+    }
+
+    .loader-content{
+      text-align:center;
+      padding:24px;
+    }
+
+    .loader-content h1{
+      font-size:32px;
+      margin:0 0 20px;
+      color:#fff;
+      letter-spacing:1px;
+    }
+
+    .loader-bar{
+      width:140px;
+      height:3px;
+      background:rgba(255,255,255,.12);
+      border-radius:999px;
+      overflow:hidden;
+      margin:auto;
+      position:relative;
+    }
+
+    .loader-bar::after{
+      content:"";
+      position:absolute;
+      left:-40%;
+      width:40%;
+      height:100%;
+      background:linear-gradient(90deg, transparent, #facc15, transparent);
+      animation:loadingMove 1.2s linear infinite;
+    }
+
+    @keyframes loadingMove{
+      0%{left:-40%}
+      100%{left:100%}
+    }
 
     .container{
       width:min(1200px, calc(100% - 32px));
@@ -118,9 +171,28 @@
       color:var(--muted);
       font-size:14px;
       transition:.25s ease;
+      position:relative;
+      padding-bottom:6px;
     }
 
     .nav-links a:hover{color:var(--text)}
+
+    .nav-links a.active{
+      color:var(--yellow);
+      font-weight:700;
+    }
+
+    .nav-links a.active::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:0;
+      width:100%;
+      height:2px;
+      background:var(--yellow);
+      border-radius:999px;
+      box-shadow:0 0 12px rgba(250,204,21,.45);
+    }
 
     .top-controls{
       display:flex;
@@ -845,6 +917,12 @@
   </style>
 </head>
 <body>
+  <div id="loader">
+    <div class="loader-content">
+      <h1>Serkan Sevimgül</h1>
+      <div class="loader-bar"></div>
+    </div>
+  </div>
 
   <nav class="navbar">
     <div class="container nav-inner">
@@ -912,7 +990,7 @@
         <div class="hero-card reveal">
           <img src="profile.jpg" alt="Serkan Sevimgül profil fotoğrafı">
           <div class="hero-card-info">
-            <h3 data-i18n="hero_card_title">Product Development Design Specialist</h3>
+            <h3 data-i18n="hero_card_title">Ürün Geliştirme Tasarım Uzmanı</h3>
             <p data-i18n="hero_card_p">
               Endüstriyel araçlarda mekanik sistem geliştirme, teknik resim, montaj yapıları,
               üretim uygunluğu ve saha verisine göre ürün iyileştirme.
@@ -1050,7 +1128,7 @@
                 <h3 data-i18n="proj1_title">Su Püskürtme Barı Sistemi</h3>
                 <p class="project-sub" data-i18n="proj1_sub">Ayarlanabilir ön su püskürtme barı sistemi</p>
               </div>
-              <div class="project-badge" data-i18n="badge_industrial">Industrial Vehicle</div>
+              <div class="project-badge" data-i18n="badge_industrial">Endüstriyel Araç</div>
             </div>
             <p class="case-line"><strong data-i18n="need_label">İhtiyaç:</strong> <span data-i18n="proj1_need">Süpürme sırasında toz kontrolünü daha verimli hale getirmek ve su dağılımını daha kontrollü sağlamak.</span></p>
             <p class="case-line"><strong data-i18n="solution_label">Çözüm:</strong> <span data-i18n="proj1_solution">Ön tarafa entegre edilen hareketli ve ayarlanabilir su püskürtme barı tasarımı geliştirildi.</span></p>
@@ -1074,7 +1152,7 @@
                 <h3 data-i18n="proj2_title">Üçlü Fırça Süpürme Sistemi</h3>
                 <p class="project-sub" data-i18n="proj2_sub">Daha geniş temizleme alanı ve yüksek verim</p>
               </div>
-              <div class="project-badge" data-i18n="badge_sweeping">Sweeping System</div>
+              <div class="project-badge" data-i18n="badge_sweeping">Süpürme Sistemi</div>
             </div>
             <p class="case-line"><strong data-i18n="need_label">İhtiyaç:</strong> <span data-i18n="proj2_need">Temizleme genişliğini artırmak ve yüzey süpürme verimini iyileştirmek.</span></p>
             <p class="case-line"><strong data-i18n="solution_label">Çözüm:</strong> <span data-i18n="proj2_solution">Çoklu fırça yapısına sahip, çalışma alanını genişleten ve mekanik uyumu gözeten sistem tasarımı geliştirildi.</span></p>
@@ -1098,7 +1176,7 @@
                 <h3 data-i18n="proj3_title">Isıtmalı Alt Şasi Sistemi</h3>
                 <p class="project-sub" data-i18n="proj3_sub">Soğuk hava ve zorlu iklimler için özel çözüm</p>
               </div>
-              <div class="project-badge" data-i18n="badge_cold">Cold Climate</div>
+              <div class="project-badge" data-i18n="badge_cold">Soğuk İklim</div>
             </div>
             <p class="case-line"><strong data-i18n="need_label">İhtiyaç:</strong> <span data-i18n="proj3_need">Düşük sıcaklıklarda çalışan araçlarda performans sürekliliğini desteklemek.</span></p>
             <p class="case-line"><strong data-i18n="solution_label">Çözüm:</strong> <span data-i18n="proj3_solution">Özellikle zorlu iklim koşullarına uygun alt sistem yaklaşımıyla ısı destekli yapı tasarlandı.</span></p>
@@ -1122,7 +1200,7 @@
                 <h3 data-i18n="proj4_title">Manyetik Toplama Sistemi</h3>
                 <p class="project-sub" data-i18n="proj4_sub">Metal parçacık toplama için manyetik çözüm</p>
               </div>
-              <div class="project-badge" data-i18n="badge_field">Field Solution</div>
+              <div class="project-badge" data-i18n="badge_field">Saha Çözümü</div>
             </div>
             <p class="case-line"><strong data-i18n="need_label">İhtiyaç:</strong> <span data-i18n="proj4_need">Yüzeyde bulunan metal parçaların güvenli şekilde toplanabilmesi.</span></p>
             <p class="case-line"><strong data-i18n="solution_label">Çözüm:</strong> <span data-i18n="proj4_solution">Araç ön yapısına entegre edilen manyetik toplama sistemi tasarlandı.</span></p>
@@ -1248,7 +1326,7 @@
 
   <footer>
     <div class="container">
-      © 2026 Serkan Sevimgül • <span data-i18n="footer_text">Mechanical Design Portfolio</span>
+      © 2026 Serkan Sevimgül • <span data-i18n="footer_text">Mekanik Tasarım Portfolyosu</span>
     </div>
   </footer>
 
@@ -1289,11 +1367,9 @@
         nav_projects: "Projeler",
         nav_certificates: "Sertifikalar",
         nav_contact: "İletişim",
-
         hero_eyebrow: "Mechanical Design • Product Development • Industrial Vehicle Systems",
         hero_p1: "Endüstriyel araç sistemleri, mekanik tasarım ve üretilebilir ürün geliştirme odaklı çalışan bir tasarım uzmanıyım. Tasarımlarımı sadece CAD üzerinde değil, sahada gerçekten çalışan, üretilebilir ve servis edilebilir çözümler olarak ele alıyorum.",
         hero_p2: "Yol süpürme araçları, fırça sistemleri, su püskürtme barları, manyetik toplama sistemleri ve özel iklim koşullarına uygun mekanik çözümler üzerinde çalışıyorum.",
-
         stat_exp_label: "Deneyim",
         stat_exp_value: "6+ Yıl",
         stat_focus_label: "Odak Alanı",
@@ -1302,17 +1378,14 @@
         stat_tools_value: "SolidWorks + AutoCAD",
         stat_approach_label: "Yaklaşım",
         stat_approach_value: "Saha Odaklı",
-
         hero_card_title: "Ürün Geliştirme Tasarım Uzmanı",
         hero_card_p: "Endüstriyel araçlarda mekanik sistem geliştirme, teknik resim, montaj yapıları, üretim uygunluğu ve saha verisine göre ürün iyileştirme.",
-
         about_mini: "Hakkımda",
         about_title: "Mühendislikte sahadaki gerçekliği merkeze alıyorum",
         about_p: "Amacım sadece iyi görünen tasarımlar üretmek değil; üretimde uygulanabilir, montajda sorun çıkarmayan, kullanım sırasında verim sağlayan ve bakım tarafında mantıklı çözümler geliştirmek.",
         about_panel1_title: "Profesyonel Bakış",
         about_panel1_p: "Ürün geliştirme sürecinde CAD doğruluğunu, üretim gerçekleriyle birlikte ele alıyorum. Mekanik sistemlerin hem çizimde hem sahada doğru çalışması benim için temel öncelik.",
         about_panel2_title: "Yetkinlikler",
-
         tools_mini: "Kullandığım Araçlar",
         tools_title: "Tasarımdan dokümantasyona kullandığım başlıca araçlar",
         tools_p: "Ürün geliştirme sürecinde tasarım, teknik çizim, veri yönetimi ve kurumsal süreç takibi için aktif olarak kullandığım araçlar aşağıda yer almaktadır.",
@@ -1322,45 +1395,37 @@
         tool_canias: "Kurumsal süreçler, ürün verileri ve üretimle ilişkili operasyonel akışların takibinde yararlandığım sistemdir.",
         tool_md: "Mekanik sistem kurgusu, işlevsel çözüm üretimi, montaj uyumu ve saha gerçeklerine uygun tasarım yaklaşımıyla çalışıyorum.",
         tool_pd: "İhtiyaç analizi, tasarım iyileştirme, üretilebilirlik ve ürünün sahadaki performansını birlikte düşünerek geliştirme yapıyorum.",
-
         projects_mini: "Seçili Projeler",
         projects_title: "Üzerinde çalıştığım projeler",
         projects_p: "Aşağıda yer alan projeler, mekanik tasarım ve ürün geliştirme alanında edindiğim tecrübeyi yansıtmaktadır. Her projede ihtiyacı doğru analiz edip uygulanabilir, üretilebilir ve saha koşullarına uygun çözümler geliştirmeyi hedefledim.",
         detail_view: "Detay Gör",
-
         badge_industrial: "Endüstriyel Araç",
         badge_sweeping: "Süpürme Sistemi",
         badge_cold: "Soğuk İklim",
         badge_field: "Saha Çözümü",
-
         need_label: "İhtiyaç:",
         solution_label: "Çözüm:",
         result_label: "Sonuç:",
-
         proj1_title: "Su Püskürtme Barı Sistemi",
         proj1_sub: "Ayarlanabilir ön su püskürtme barı sistemi",
         proj1_need: "Süpürme sırasında toz kontrolünü daha verimli hale getirmek ve su dağılımını daha kontrollü sağlamak.",
         proj1_solution: "Ön tarafa entegre edilen hareketli ve ayarlanabilir su püskürtme barı tasarımı geliştirildi.",
         proj1_result: "Çalışma yüzeyinde daha dengeli su dağılımı ve daha iyi toz bastırma performansı hedeflendi.",
-
         proj2_title: "Üçlü Fırça Süpürme Sistemi",
         proj2_sub: "Daha geniş temizleme alanı ve yüksek verim",
         proj2_need: "Temizleme genişliğini artırmak ve yüzey süpürme verimini iyileştirmek.",
         proj2_solution: "Çoklu fırça yapısına sahip, çalışma alanını genişleten ve mekanik uyumu gözeten sistem tasarımı geliştirildi.",
         proj2_result: "Süpürme kapsamını artıran ve operasyonel verimliliği destekleyen yapı ortaya çıkarıldı.",
-
         proj3_title: "Isıtmalı Alt Şasi Sistemi",
         proj3_sub: "Soğuk hava ve zorlu iklimler için özel çözüm",
         proj3_need: "Düşük sıcaklıklarda çalışan araçlarda performans sürekliliğini desteklemek.",
         proj3_solution: "Özellikle zorlu iklim koşullarına uygun alt sistem yaklaşımıyla ısı destekli yapı tasarlandı.",
         proj3_result: "Kış şartlarında operasyon güvenilirliğini destekleyen daha dayanıklı bir çözüm ortaya kondu.",
-
         proj4_title: "Manyetik Toplama Sistemi",
         proj4_sub: "Metal parçacık toplama için manyetik çözüm",
         proj4_need: "Yüzeyde bulunan metal parçaların güvenli şekilde toplanabilmesi.",
         proj4_solution: "Araç ön yapısına entegre edilen manyetik toplama sistemi tasarlandı.",
         proj4_result: "Ferromanyetik atıkların toplanmasını destekleyen daha güvenli ve işlevsel bir sistem elde edildi.",
-
         cert_mini: "Sertifikalar",
         cert_title: "Eğitim ve gelişim alanlarım",
         cert_p: "Bu bölümde yer alan sertifikalar, teknik bilgi birikimimi ve mesleki gelişime verdiğim önemi yansıtmaktadır.",
@@ -1369,7 +1434,6 @@
         filter_management: "Yönetim",
         filter_quality: "Kalite",
         filter_other: "Diğer",
-
         cert_ford_title: "Ford Trucks",
         cert_pm_title: "Proje Yönetimi",
         cert_qc_title: "Kalite Kontrol",
@@ -1378,7 +1442,6 @@
         cert_swr_title: "SolidWorks Routing",
         cert_uagem_title: "UAGEM",
         cert_extra_title: "Ek Sertifika",
-
         cert_ford: "Kurumsal veya teknik gelişim sertifikası.",
         cert_pm: "Proje yönetimi odaklı eğitim sertifikası.",
         cert_qc: "Kalite kontrol ve süreç yaklaşımı odaklı sertifika.",
@@ -1387,28 +1450,23 @@
         cert_swr: "Routing ve sistem yönlendirme eğitimi.",
         cert_uagem: "Eğitim veya uzmanlık geliştirme sertifikası.",
         cert_extra: "Ek sertifika görseli.",
-
         contact_title: "İletişim",
         contact_p: "Mekanik tasarım, ürün geliştirme, endüstriyel araç sistemleri ve mühendislik odaklı profesyonel bağlantılar için benimle iletişime geçebilirsiniz.",
         email_label: "E-posta:",
         linkedin_view: "Profilimi Görüntüle",
-
         footer_text: "Mekanik Tasarım Portfolyosu",
         float_phone: "Telefon",
         float_mail: "Mail"
       },
-
       en: {
         nav_about: "About",
         nav_tools: "Tools",
         nav_projects: "Projects",
         nav_certificates: "Certificates",
         nav_contact: "Contact",
-
         hero_eyebrow: "Mechanical Design • Product Development • Industrial Vehicle Systems",
         hero_p1: "I am a design specialist focused on industrial vehicle systems, mechanical design, and manufacturable product development. I approach my designs not only as CAD models, but as real-world solutions that are functional, manufacturable, and serviceable.",
         hero_p2: "I work on road sweeping vehicles, brush systems, water spray bars, magnetic collection systems, and mechanical solutions tailored for challenging climate conditions.",
-
         stat_exp_label: "Experience",
         stat_exp_value: "6+ Years",
         stat_focus_label: "Focus Area",
@@ -1417,17 +1475,14 @@
         stat_tools_value: "SolidWorks + AutoCAD",
         stat_approach_label: "Approach",
         stat_approach_value: "Field-Oriented",
-
         hero_card_title: "Product Development Design Specialist",
         hero_card_p: "Mechanical system development, technical drawings, assembly structures, manufacturability, and product improvement based on field feedback in industrial vehicles.",
-
         about_mini: "About",
         about_title: "I put real-world engineering conditions at the center",
         about_p: "My aim is not only to create designs that look good, but to develop solutions that are manufacturable, practical in assembly, efficient in operation, and reasonable in maintenance.",
         about_panel1_title: "Professional Perspective",
         about_panel1_p: "In the product development process, I evaluate CAD accuracy together with manufacturing realities. Making sure mechanical systems work properly both in design and in the field is my main priority.",
         about_panel2_title: "Core Competencies",
-
         tools_mini: "Tools I Use",
         tools_title: "The main tools I use from design to documentation",
         tools_p: "Below are the main tools I actively use for design, technical drafting, data management, and corporate process tracking throughout the product development process.",
@@ -1437,45 +1492,37 @@
         tool_canias: "It is the system I use to follow corporate processes, product data, and production-related operational workflows.",
         tool_md: "I work with a design approach focused on mechanical system architecture, functional solutions, assembly compatibility, and field realities.",
         tool_pd: "I approach product development by considering needs analysis, design improvement, manufacturability, and field performance together.",
-
         projects_mini: "Selected Projects",
         projects_title: "Projects I have worked on",
         projects_p: "The projects below reflect my experience in mechanical design and product development. In each project, I aimed to analyze the need accurately and develop applicable, manufacturable, and field-suitable solutions.",
         detail_view: "View Details",
-
         badge_industrial: "Industrial Vehicle",
         badge_sweeping: "Sweeping System",
         badge_cold: "Cold Climate",
         badge_field: "Field Solution",
-
         need_label: "Need:",
         solution_label: "Solution:",
         result_label: "Result:",
-
         proj1_title: "Water Spray Bar System",
         proj1_sub: "Adjustable front water spray bar system",
         proj1_need: "To improve dust control during sweeping operations and provide more controlled water distribution.",
         proj1_solution: "A movable and adjustable front-integrated water spray bar system was developed.",
         proj1_result: "A more balanced water distribution across the working surface and improved dust suppression performance were targeted.",
-
         proj2_title: "Triple Brush Sweeping System",
         proj2_sub: "Wider cleaning coverage and higher efficiency",
         proj2_need: "To increase cleaning width and improve surface sweeping efficiency.",
         proj2_solution: "A multi-brush system was developed to widen the working area while maintaining mechanical compatibility.",
         proj2_result: "A structure that supports greater sweeping coverage and operational efficiency was achieved.",
-
         proj3_title: "Heated Undercarriage System",
         proj3_sub: "Special solution for cold and harsh climates",
         proj3_need: "To support performance continuity in vehicles operating at low temperatures.",
         proj3_solution: "A heat-supported substructure was designed with a system approach suitable for harsh climate conditions.",
         proj3_result: "A more durable solution supporting operational reliability in winter conditions was presented.",
-
         proj4_title: "Magnetic Collection System",
         proj4_sub: "Magnetic solution for collecting metal particles",
         proj4_need: "To enable safe collection of metal parts found on the road surface.",
         proj4_solution: "A magnetic collection system integrated into the front structure of the vehicle was designed.",
         proj4_result: "A safer and more functional system supporting the collection of ferromagnetic waste was achieved.",
-
         cert_mini: "Certificates",
         cert_title: "My education and development areas",
         cert_p: "The certificates in this section reflect my technical knowledge and the importance I place on professional development.",
@@ -1484,7 +1531,6 @@
         filter_management: "Management",
         filter_quality: "Quality",
         filter_other: "Other",
-
         cert_ford_title: "Ford Trucks",
         cert_pm_title: "Project Management",
         cert_qc_title: "Quality Control",
@@ -1493,7 +1539,6 @@
         cert_swr_title: "SolidWorks Routing",
         cert_uagem_title: "UAGEM",
         cert_extra_title: "Additional Certificate",
-
         cert_ford: "Corporate or technical development certificate.",
         cert_pm: "Project management focused training certificate.",
         cert_qc: "Certificate focused on quality control and process approach.",
@@ -1502,12 +1547,10 @@
         cert_swr: "Routing and system layout training.",
         cert_uagem: "Training or professional development certificate.",
         cert_extra: "Additional certificate visual.",
-
         contact_title: "Contact",
         contact_p: "You can contact me for mechanical design, product development, industrial vehicle systems, and engineering-focused professional connections.",
         email_label: "Email:",
         linkedin_view: "View My Profile",
-
         footer_text: "Mechanical Design Portfolio",
         float_phone: "Phone",
         float_mail: "Email"
@@ -1545,11 +1588,6 @@
     document.querySelectorAll(".theme-btn").forEach(btn => {
       btn.addEventListener("click", () => setTheme(btn.dataset.theme));
     });
-
-    const savedLang = localStorage.getItem("siteLang") || "tr";
-    const savedTheme = localStorage.getItem("siteTheme") || "dark";
-    setLanguage(savedLang);
-    setTheme(savedTheme);
 
     function openLightbox(src){
       const lightbox = document.getElementById('lightbox');
@@ -1608,6 +1646,44 @@
     }, { threshold: 0.12 });
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    const sections = document.querySelectorAll("section[id]");
+    const navItems = document.querySelectorAll(".nav-links a");
+
+    function setActiveNav() {
+      let current = "";
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 140;
+        const sectionHeight = section.offsetHeight;
+        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      navItems.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === "#" + current) {
+          link.classList.add("active");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", setActiveNav);
+    window.addEventListener("load", setActiveNav);
+
+    const savedLang = localStorage.getItem("siteLang") || "tr";
+    const savedTheme = localStorage.getItem("siteTheme") || "dark";
+    setLanguage(savedLang);
+    setTheme(savedTheme);
+
+    window.addEventListener("load", () => {
+      const loader = document.getElementById("loader");
+      setTimeout(() => {
+        loader.classList.add("hide");
+      }, 700);
+      setActiveNav();
+    });
   </script>
 </body>
 </html>
